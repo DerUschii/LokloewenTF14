@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triebfahrzeugführer Klasse 14 | Community</title>
+    <title>Triebfahrzeugführer 2026 Klasse 14</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -23,6 +23,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
             background-color: var(--bg-color);
@@ -37,11 +41,11 @@
             align-items: center;
         }
 
-        /* Navigation Bar */
+        /* Top Navigation Bar */
         nav {
             width: 100%;
             max-width: 1200px;
-            padding: 20px 30px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,13 +54,13 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(8, 4, 2, 0.8);
+            background: rgba(8, 4, 2, 0.9);
         }
 
         .nav-brand {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: #fff;
             text-transform: uppercase;
         }
@@ -65,24 +69,60 @@
             color: var(--primary-fire);
         }
 
-        .nav-btn {
-            background: linear-gradient(135deg, var(--primary-fire), var(--bright-gold));
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Großer Putlitz Button */
+        .putlitz-btn {
+            background: linear-gradient(135deg, #ff6600, #ffaa00);
             color: #000;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--glow-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(255, 183, 0, 0.6);
+        .putlitz-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 170, 0, 0.9);
+            background: linear-gradient(135deg, #ffaa00, #ffffff);
         }
 
-        /* Hero Section mit schön eingebautem Logo */
+        /* Discord Button */
+        .discord-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 69, 0, 0.5);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .discord-btn:hover {
+            background: var(--primary-fire);
+            color: #000;
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        /* Hero Section mit Logo */
         .hero {
             display: flex;
             flex-direction: column;
@@ -126,7 +166,7 @@
         }
 
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -144,7 +184,7 @@
             margin-bottom: 30px;
         }
 
-        /* Hauptinhalt / Regeln Grid */
+        /* Layout & Sections */
         .main-container {
             max-width: 1100px;
             width: 100%;
@@ -155,6 +195,7 @@
         .section-header {
             text-align: center;
             margin-bottom: 40px;
+            margin-top: 40px;
         }
 
         .section-title {
@@ -175,6 +216,7 @@
             margin: 10px auto 0;
         }
 
+        /* Rules Grid */
         .rules-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -236,6 +278,40 @@
             line-height: 1.5;
         }
 
+        /* Section: Praxis in Putlitz */
+        .putlitz-section {
+            background: rgba(20, 10, 5, 0.8);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .putlitz-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .info-box h4 {
+            color: var(--bright-gold);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         footer {
             width: 100%;
             text-align: center;
@@ -247,8 +323,12 @@
         }
 
         @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .logo-img {
                 width: 160px;
@@ -266,17 +346,19 @@
     <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
-        <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn">
-            <i class="fab fa-discord"></i> Discord Joinen
-        </a>
+        <div class="nav-links">
+            <a href="#putlitz" class="nav-btn putlitz-btn">
+                <i class="fas fa-train"></i> Praxis in Putlitz
+            </a>
+            <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn discord-btn">
+                <i class="fab fa-discord"></i> Discord Joinen
+            </a>
+        </div>
     </nav>
-<div class="cta-container" style="margin-top: -15px;">
-    <a href="praxis.html" class="btn-discord" style="background: linear-gradient(45deg, #332211, #553311); border: 1px solid var(--primary-orange);">Praxis in Putlitz</a>
-</div>
+
     <!-- Hero Section -->
     <header class="hero">
         <div class="logo-wrapper">
-            <!-- Passe hier den Bildnamen an, falls nötig -->
             <img src="watermarked_img_8593186225855319626.png" alt="TF14 Logo" class="logo-img">
         </div>
         <h1>Triebfahrzeugführer Klasse 14</h1>
@@ -350,11 +432,37 @@
                 <p>Wir sind pünktlich, halten unser Wort, fangen uns gegenseitig auf und achten auch auf die mentale Gesundheit füreinander – unsere Etikette gibt unserem Auftreten Richtung und Würde.</p>
             </div>
         </div>
+
+        <!-- Praxis in Putlitz Section -->
+        <section id="putlitz" class="putlitz-section">
+            <div class="section-header" style="margin-top: 0;">
+                <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
+            </div>
+            
+            <p style="text-align: center; color: var(--text-muted);">Alle wichtigen Informationen, Ablaufpläne und Unterlagen zu unseren Praxis-Tagen am Standort Putlitz.</p>
+
+            <div class="putlitz-content">
+                <div class="info-box">
+                    <h4><i class="fas fa-calendar-alt"></i> Termine & Ablauf</h4>
+                    <p>Hier findest du demnächst die aktuellen Praxistermine, Uhrzeiten und den Schichtplan für die Praxisausbildung.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-map-marker-alt"></i> Anfahrt & Treffpunkt</h4>
+                    <p>Treffpunkt ist am Bahnhof Putlitz. Bitte bringt eure Sicherheitskleidung (PSA) vollständig mit.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Vorbereitung</h4>
+                    <p>Überprüft vor Antritt der Praxisphase die relevanten Regelwerke und Checklisten im Discord-Kanal.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; Triebfahrzeugführer Klasse 14. Alle Rechte vorbehalten.</p>
+        <p>&copy; Triebfahrzeugführer 2026 Klasse 14. Alle Rechte vorbehalten.</p>
     </footer>
 
 </body>
