@@ -45,7 +45,7 @@
         nav {
             width: 100%;
             max-width: 1200px;
-            padding: 15px 30px;
+            padding: 12px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,6 +55,12 @@
             top: 0;
             z-index: 100;
             background: rgba(8, 4, 2, 0.9);
+        }
+
+        .nav-brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .nav-brand {
@@ -69,13 +75,28 @@
             color: var(--primary-fire);
         }
 
+        /* Vectron Icon in der Navigationsleiste */
+        .nav-logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--primary-fire);
+            box-shadow: 0 0 12px rgba(255, 69, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo-img:hover {
+            transform: scale(1.1);
+        }
+
         .nav-links {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        /* Großer Putlitz Button */
+        /* Putlitz Button */
         .putlitz-btn {
             background: linear-gradient(135deg, #ff6600, #ffaa00);
             color: #000;
@@ -122,13 +143,13 @@
             box-shadow: 0 0 20px var(--glow-color);
         }
 
-        /* Hero Section mit Logo */
+        /* Hero Section mit Haupt-Logo */
         .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 50px 20px 30px;
             max-width: 900px;
             width: 100%;
         }
@@ -195,7 +216,7 @@
         .section-header {
             text-align: center;
             margin-bottom: 40px;
-            margin-top: 40px;
+            margin-top: 20px;
         }
 
         .section-title {
@@ -322,21 +343,17 @@
             background: #040201;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             nav {
                 flex-direction: column;
                 gap: 15px;
             }
+            .nav-brand-wrapper {
+                flex-direction: column;
+                gap: 8px;
+            }
             h1 {
                 font-size: 1.8rem;
-            }
-            .logo-img {
-                width: 160px;
-                height: 160px;
-            }
-            .logo-wrapper::after {
-                width: 160px;
-                height: 160px;
             }
         }
     </style>
@@ -345,7 +362,11 @@
 
     <!-- Top Navigation Bar -->
     <nav>
-        <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
+        <div class="nav-brand-wrapper">
+            <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
+            <!-- Eingebundenes Vectron-Lok Bild als Navigations-Icon -->
+            <img src="lok.jpg" alt="TF14 Vectron" class="nav-logo-img">
+        </div>
         <div class="nav-links">
             <a href="#putlitz" class="nav-btn putlitz-btn">
                 <i class="fas fa-train"></i> Praxis in Putlitz
