@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triebfahrzeugführer Klasse 14</title>
+    <style>
+        :root {
+            --bg-color: #080504;
+            --card-bg: #140d0a;
+            --primary-orange: #ff6600;
+            --bright-yellow: #ffcc00;
+            --text-color: #f1f1f1;
+            --text-muted: #b3a296;
+            --border-glow: #ff4500;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            max-width: 280px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.4));
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(180deg, var(--bright-yellow) 0%, var(--primary-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+        }
+
+        .cta-container {
+            margin-bottom: 40px;
+        }
+
+        .btn-discord {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff4500, #ff8c00);
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-discord:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255,
