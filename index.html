@@ -374,6 +374,12 @@
             height: 200px;
             object-fit: cover;
             display: block;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .gallery-card img:hover {
+            opacity: 0.9;
         }
 
         .gallery-caption {
@@ -382,6 +388,56 @@
             font-weight: 600;
             color: var(--bright-gold);
             font-size: 0.95rem;
+        }
+
+        /* Lightbox Modal für Großansicht */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-modal img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
+            border: 1px solid rgba(255, 102, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            color: var(--bright-gold);
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-fire);
         }
 
         footer {
@@ -547,27 +603,52 @@
 
             <div class="welpen-gallery">
                 <div class="gallery-card">
-                    <img src="lok.jpg" alt="Loklöwenwelpe 1">
+                    <img src="lok.jpg" alt="Loklöwenwelpe 1" onclick="openLightbox(this, 'by Dominik')">
                     <div class="gallery-caption">by Dominik</div>
                 </div>
 
                 <div class="gallery-card">
-                    <img src="Lok2" alt="Lok2">
+                    <img src="Lok2" alt="Lok2" onclick="openLightbox(this, 'by Mattis')">
                     <div class="gallery-caption">by Mattis</div>
                 </div>
 
                 <div class="gallery-card">
-                    <img src="welpe3.jpg" alt="Loklöwenwelpe 3">
+                    <img src="welpe3.jpg" alt="Loklöwenwelpe 3" onclick="openLightbox(this, 'Bereit für die Praxis')">
                     <div class="gallery-caption">Bereit für die Praxis</div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Großansicht">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; Triebfahrzeugführer 2026 Klasse 14. Alle Rechte vorbehalten.</p>
     </footer>
+
+    <!-- JavaScript für die Großansicht -->
+    <script>
+        function openLightbox(imgElement, captionText) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightboxImg.src = imgElement.src;
+            lightboxCaption.textContent = captionText;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+    </script>
 
 </body>
 </html>
