@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triebfahrzeugführer Klasse 14</title>
+    <title>Triebfahrzeugführer Klasse 14 | Community</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #080504;
-            --card-bg: #140d0a;
-            --primary-orange: #ff6600;
-            --bright-yellow: #ffcc00;
-            --text-color: #f1f1f1;
-            --text-muted: #b3a296;
-            --border-glow: #ff4500;
+            --bg-color: #080402;
+            --card-bg: rgba(23, 13, 8, 0.7);
+            --primary-fire: #ff4500;
+            --secondary-orange: #ff6600;
+            --bright-gold: #ffb700;
+            --glow-color: rgba(255, 69, 0, 0.4);
+            --text-color: #f5f5f5;
+            --text-muted: #a3958c;
         }
 
         * {
@@ -22,212 +24,335 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 183, 0, 0.05), transparent 40%);
             color: var(--text-color);
             line-height: 1.6;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
         }
 
-        header {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 30px;
+        /* Navigation Bar */
+        nav {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 69, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 4, 2, 0.8);
         }
 
-        .logo {
-            max-width: 280px;
-            height: auto;
-            filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.4));
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #fff;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(180deg, var(--bright-yellow) 0%, var(--primary-orange) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
         }
 
-        .cta-container {
-            margin-bottom: 40px;
+        .nav-brand span {
+            color: var(--primary-fire);
         }
 
-        .btn-discord {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff4500, #ff8c00);
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 1.1rem;
+        .nav-btn {
+            background: linear-gradient(135deg, var(--primary-fire), var(--bright-gold));
+            color: #000;
+            font-weight: 700;
             text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 50px;
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            box-shadow: 0 0 15px var(--glow-color);
         }
 
-        .btn-discord:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(255, 140, 0, 0.8);
-            background: linear-gradient(45deg, #ff8c00, var(--bright-yellow));
-            color: #000000;
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 183, 0, 0.6);
         }
 
-        .rules-container {
+        /* Hero Section mit schön eingebautem Logo */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px 40px;
             max-width: 900px;
             width: 100%;
         }
 
-        .rules-title {
-            text-align: center;
-            font-size: 1.8rem;
+        .logo-wrapper {
+            position: relative;
             margin-bottom: 25px;
-            color: var(--bright-yellow);
-            border-bottom: 2px solid var(--primary-orange);
-            padding-bottom: 8px;
         }
 
-        .grid {
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, var(--primary-fire) 0%, transparent 70%);
+            opacity: 0.5;
+            filter: blur(30px);
+            z-index: 1;
+        }
+
+        .logo-img {
+            position: relative;
+            z-index: 2;
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 10px;
+            background: rgba(255, 69, 0, 0.05);
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            background: linear-gradient(180deg, #ffffff 0%, var(--bright-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* Hauptinhalt / Regeln Grid */
+        .main-container {
+            max-width: 1100px;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-fire), transparent);
+            margin: 10px auto 0;
+        }
+
+        .rules-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
-        @media (min-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        .rule-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .rule-card {
-            background-color: var(--card-bg);
-            border: 1px solid #2a1810;
-            border-left: 4px solid var(--primary-orange);
-            border-radius: 8px;
-            padding: 20px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-fire), var(--bright-gold));
+            opacity: 0.5;
+            transition: all 0.3s ease;
         }
 
         .rule-card:hover {
-            transform: translateY(-2px);
-            border-left-color: var(--bright-yellow);
-            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.15);
+            transform: translateY(-5px);
+            border-color: rgba(255, 69, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
         }
 
-        .rule-number {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: var(--primary-orange);
+        .rule-card:hover::before {
+            opacity: 1;
+            width: 5px;
+        }
+
+        .rule-badge {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--bright-gold);
             text-transform: uppercase;
-            margin-bottom: 5px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
         }
 
-        .rule-header {
+        .rule-card h3 {
             font-size: 1.2rem;
-            color: #ffffff;
-            margin-bottom: 10px;
+            color: #fff;
+            margin-bottom: 12px;
         }
 
-        .rule-text {
+        .rule-card p {
             font-size: 0.95rem;
             color: var(--text-muted);
+            line-height: 1.5;
         }
 
         footer {
-            margin-top: 50px;
-            color: #665245;
-            font-size: 0.85rem;
+            width: 100%;
             text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: #040201;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .logo-img {
+                width: 160px;
+                height: 160px;
+            }
+            .logo-wrapper::after {
+                width: 160px;
+                height: 160px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="watermarked_img_8593186225855319626.png" alt="TF14 Logo" class="logo">
+    <!-- Top Navigation Bar -->
+    <nav>
+        <div class="nav-brand">TF<span>14</span></div>
+        <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn">
+            <i class="fab fa-discord"></i> Discord Joinen
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="logo-wrapper">
+            <!-- Passe hier den Bildnamen an, falls nötig -->
+            <img src="watermarked_img_8593186225855319626.png" alt="TF14 Logo" class="logo-img">
+        </div>
         <h1>Triebfahrzeugführer Klasse 14</h1>
+        <p class="subtitle">Willkommen in unserer Community. Hier findest du unsere Richtlinien für erfolgreiches und gemeinsames Lernen auf Augenhöhe.</p>
     </header>
 
-    <div class="cta-container">
-        <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="btn-discord">Dem Discord-Server beitreten</a>
-    </div>
+    <!-- Community Rules Grid -->
+    <main class="main-container">
+        <div class="section-header">
+            <h2 class="section-title">Community Regeln</h2>
+        </div>
 
-    <main class="rules-container">
-        <h2 class="rules-title">Community-Regeln</h2>
-        
-        <div class="grid">
+        <div class="rules-grid">
             <div class="rule-card">
-                <div class="rule-number">Gebot 1</div>
-                <h3 class="rule-header">Respektvoll miteinander umgehen</h3>
-                <p class="rule-text">Wir begegnen uns wertschätzend und auf Augenhöhe, hören einander zu und lassen jeden ausreden.</p>
+                <div class="rule-badge">Gebot #01</div>
+                <h3>Respektvoll miteinander umgehen</h3>
+                <p>Wir begegnen uns wertschätzend und auf Augenhöhe, hören einander zu und lassen jeden ausreden.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 2</div>
-                <h3 class="rule-header">Zusammenhalt und Teamwork leben</h3>
-                <p class="rule-text">Wir arbeiten als Team, ziehen an einem Strang, lassen unser Ego draußen und niemanden zurück – Sicherheit und Teamarbeit stehen über Rechthaben.</p>
+                <div class="rule-badge">Gebot #02</div>
+                <h3>Zusammenhalt & Teamwork</h3>
+                <p>Wir arbeiten als Team, ziehen an einem Strang, lassen unser Ego draußen und niemanden zurück – Sicherheit und Teamarbeit stehen über Rechthaben.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 3</div>
-                <h3 class="rule-header">Akzeptanz und Offenheit zeigen</h3>
-                <p class="rule-text">Wir akzeptieren unterschiedliche Meinungen, Stärken und Schwächen.</p>
+                <div class="rule-badge">Gebot #03</div>
+                <h3>Akzeptanz & Offenheit</h3>
+                <p>Wir akzeptieren unterschiedliche Meinungen, Stärken und Schwächen.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 4</div>
-                <h3 class="rule-header">Offen mit Fehlern umgehen und daraus lernen</h3>
-                <p class="rule-text">Wir hinterfragen unser eigenes Verhalten, sprechen Probleme, Meinungsverschiedenheiten und Fehler ehrlich an und lernen gemeinsam daraus – auch damit sie später nicht im Betrieb passieren.</p>
+                <div class="rule-badge">Gebot #04</div>
+                <h3>Lernkultur & Fehlerkultur</h3>
+                <p>Wir hinterfragen unser eigenes Verhalten, sprechen Probleme, Meinungsverschiedenheiten und Fehler ehrlich an und lernen gemeinsam daraus – auch damit sie später nicht im Betrieb passieren.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 5</div>
-                <h3 class="rule-header">Zusammenhänge verstehen statt auswendig lernen</h3>
-                <p class="rule-text">Wir wollen Zusammenhänge wirklich verstehen, nicht nur Inhalte auswendig lernen.</p>
+                <div class="rule-badge">Gebot #05</div>
+                <h3>Verständnis & Tiefe</h3>
+                <p>Wir wollen Zusammenhänge wirklich verstehen, nicht nur Inhalte auswendig lernen.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 6</div>
-                <h3 class="rule-header">Demokratisch entscheiden</h3>
-                <p class="rule-text">Wichtige Entscheidungen treffen wir gemeinsam und fair.</p>
+                <div class="rule-badge">Gebot #06</div>
+                <h3>Demokratie</h3>
+                <p>Wichtige Entscheidungen treffen wir gemeinsam und fair.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 7</div>
-                <h3 class="rule-header">Herausforderungen als Ansporn sehen</h3>
-                <p class="rule-text">Herausforderungen motivieren uns, Lösungen zu finden.</p>
+                <div class="rule-badge">Gebot #07</div>
+                <h3>Ansporn & Motivation</h3>
+                <p>Herausforderungen motivieren uns, Lösungen zu finden.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 8</div>
-                <h3 class="rule-header">Leistungs- und zielorientiert arbeiten</h3>
-                <p class="rule-text">Wir arbeiten konzentriert, verfolgen unsere gemeinsamen Ziele und verlieren dabei unsere eigenen nicht aus den Augen.</p>
+                <div class="rule-badge">Gebot #08</div>
+                <h3>Zielorientiertes Arbeiten</h3>
+                <p>Wir arbeiten konzentriert, verfolgen unsere gemeinsamen Ziele und verlieren dabei unsere eigenen nicht aus den Augen.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 9</div>
-                <h3 class="rule-header">Verantwortung übernehmen</h3>
-                <p class="rule-text">Jeder übernimmt Verantwortung für die Gruppe, seine Aufgaben und seinen Beitrag – wir lernen nicht nur für Prüfungen, sondern für Situationen, in denen andere auf unsere Entscheidungen vertrauen.</p>
+                <div class="rule-badge">Gebot #09</div>
+                <h3>Verantwortung</h3>
+                <p>Jeder übernimmt Verantwortung für die Gruppe, seine Aufgaben und seinen Beitrag – wir lernen nicht nur für Prüfungen, sondern für Situationen, in denen andere auf unsere Entscheidungen vertrauen.</p>
             </div>
 
             <div class="rule-card">
-                <div class="rule-number">Gebot 10</div>
-                <h3 class="rule-header">Zuverlässig sein und aufeinander achten</h3>
-                <p class="rule-text">Wir sind pünktlich, halten unser Wort, fangen uns gegenseitig auf und achten auch auf die mentale Gesundheit füreinander – unsere Etikette gibt unserem Auftreten Richtung und Würde.</p>
+                <div class="rule-badge">Gebot #10</div>
+                <h3>Zuverlässigkeit & Etikette</h3>
+                <p>Wir sind pünktlich, halten unser Wort, fangen uns gegenseitig auf und achten auch auf die mentale Gesundheit füreinander – unsere Etikette gibt unserem Auftreten Richtung und Würde.</p>
             </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; Triebfahrzeugführer Klasse 14 – Die 10 Gebote des gemeinsamen Lernens</p>
+        <p>&copy; Triebfahrzeugführer Klasse 14. Alle Rechte vorbehalten.</p>
     </footer>
 
 </body>
