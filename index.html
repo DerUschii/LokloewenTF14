@@ -76,4 +76,159 @@
 
         .btn-discord:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(255,
+            box-shadow: 0 0 25px rgba(255, 140, 0, 0.8);
+            background: linear-gradient(45deg, #ff8c00, var(--bright-yellow));
+            color: #000000;
+        }
+
+        .rules-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .rules-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--bright-yellow);
+            border-bottom: 2px solid var(--primary-orange);
+            padding-bottom: 8px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .rule-card {
+            background-color: var(--card-bg);
+            border: 1px solid #2a1810;
+            border-left: 4px solid var(--primary-orange);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-2px);
+            border-left-color: var(--bright-yellow);
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.15);
+        }
+
+        .rule-number {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--primary-orange);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .rule-header {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .rule-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            margin-top: 50px;
+            color: #665245;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="watermarked_img_8593186225855319626.png" alt="TF14 Logo" class="logo">
+        <h1>Triebfahrzeugführer Klasse 14</h1>
+    </header>
+
+    <div class="cta-container">
+        <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="btn-discord">Dem Discord-Server beitreten</a>
+    </div>
+
+    <main class="rules-container">
+        <h2 class="rules-title">Community-Regeln</h2>
+        
+        <div class="grid">
+            <div class="rule-card">
+                <div class="rule-number">Gebot 1</div>
+                <h3 class="rule-header">Respektvoll miteinander umgehen</h3>
+                <p class="rule-text">Wir begegnen uns wertschätzend und auf Augenhöhe, hören einander zu und lassen jeden ausreden.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 2</div>
+                <h3 class="rule-header">Zusammenhalt und Teamwork leben</h3>
+                <p class="rule-text">Wir arbeiten als Team, ziehen an einem Strang, lassen unser Ego draußen und niemanden zurück – Sicherheit und Teamarbeit stehen über Rechthaben.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 3</div>
+                <h3 class="rule-header">Akzeptanz und Offenheit zeigen</h3>
+                <p class="rule-text">Wir akzeptieren unterschiedliche Meinungen, Stärken und Schwächen.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 4</div>
+                <h3 class="rule-header">Offen mit Fehlern umgehen und daraus lernen</h3>
+                <p class="rule-text">Wir hinterfragen unser eigenes Verhalten, sprechen Probleme, Meinungsverschiedenheiten und Fehler ehrlich an und lernen gemeinsam daraus – auch damit sie später nicht im Betrieb passieren.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 5</div>
+                <h3 class="rule-header">Zusammenhänge verstehen statt auswendig lernen</h3>
+                <p class="rule-text">Wir wollen Zusammenhänge wirklich verstehen, nicht nur Inhalte auswendig lernen.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 6</div>
+                <h3 class="rule-header">Demokratisch entscheiden</h3>
+                <p class="rule-text">Wichtige Entscheidungen treffen wir gemeinsam und fair.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 7</div>
+                <h3 class="rule-header">Herausforderungen als Ansporn sehen</h3>
+                <p class="rule-text">Herausforderungen motivieren uns, Lösungen zu finden.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 8</div>
+                <h3 class="rule-header">Leistungs- und zielorientiert arbeiten</h3>
+                <p class="rule-text">Wir arbeiten konzentriert, verfolgen unsere gemeinsamen Ziele und verlieren dabei unsere eigenen nicht aus den Augen.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 9</div>
+                <h3 class="rule-header">Verantwortung übernehmen</h3>
+                <p class="rule-text">Jeder übernimmt Verantwortung für die Gruppe, seine Aufgaben und seinen Beitrag – wir lernen nicht nur für Prüfungen, sondern für Situationen, in denen andere auf unsere Entscheidungen vertrauen.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-number">Gebot 10</div>
+                <h3 class="rule-header">Zuverlässig sein und aufeinander achten</h3>
+                <p class="rule-text">Wir sind pünktlich, halten unser Wort, fangen uns gegenseitig auf und achten auch auf die mentale Gesundheit füreinander – unsere Etikette gibt unserem Auftreten Richtung und Würde.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Triebfahrzeugführer Klasse 14 – Die 10 Gebote des gemeinsamen Lernens</p>
+    </footer>
+
+</body>
+</html>
