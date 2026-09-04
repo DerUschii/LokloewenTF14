@@ -182,12 +182,18 @@
             z-index: 2;
             width: 220px;
             height: 220px;
-            object-fit: contain;
+            object-fit: cover;
             border-radius: 50%;
-            padding: 10px;
+            padding: 5px;
             background: rgba(255, 69, 0, 0.05);
-            border: 1px solid rgba(255, 69, 0, 0.3);
+            border: 2px solid rgba(255, 102, 0, 0.5);
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.03);
         }
 
         h1 {
@@ -463,7 +469,6 @@
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
     <nav>
         <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
         <div class="nav-links">
@@ -479,19 +484,16 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="hero">
         <div class="logo-wrapper">
-            <img src="watermarked_img_8593186225855319626.png" alt="TF14 Logo" class="logo-img">
+            <img src="1000194537.jpg" alt="Loklöwen Logo" class="logo-img" onclick="openLightbox(this, 'Loklöwen-Logo')">
         </div>
         <h1>Triebfahrzeugführer Klasse 14</h1>
         <p class="subtitle">Willkommen in unserer Community. Hier findest du unsere Richtlinien für erfolgreiches und gemeinsames Lernen auf Augenhöhe.</p>
     </header>
 
-    <!-- Main Content Container -->
     <main class="main-container">
 
-        <!-- Musik-Player ganz oben über den Geboten -->
         <div style="text-align: center; margin: 0 auto 40px auto; padding: 20px; background: rgba(20, 10, 5, 0.8); border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
             <h4 style="color: #ffb700; margin-bottom: 10px; font-size: 1rem;"><i class="fas fa-music"></i> Loklöwen Soundtrack</h4>
             <audio controls autoplay loop style="width: 100%;">
@@ -567,7 +569,6 @@
             </div>
         </div>
 
-        <!-- Praxis in Putlitz Section -->
         <section id="putlitz" class="putlitz-section">
             <div class="section-header" style="margin-top: 0;">
                 <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
@@ -593,7 +594,6 @@
             </div>
         </section>
 
-        <!-- Section: Bilder von Loklöwenwelpen -->
         <section id="welpen" class="welpen-section">
             <div class="section-header" style="margin-top: 0;">
                 <h2 class="section-title"><i class="fas fa-paw"></i> Bilder von Loklöwenwelpen</h2>
@@ -608,7 +608,6 @@
                 </div>
 
                 <div class="gallery-card">
-                    <!-- Falls deine Datei anders heißt (z.B. lok2.png), einfach hier anpassen -->
                     <img src="lok2.jpg" alt="Lok2" onclick="openLightbox(this, 'by Mattis')">
                     <div class="gallery-caption">by Mattis</div>
                 </div>
@@ -621,19 +620,16 @@
         </section>
     </main>
 
-    <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img id="lightbox-img" src="" alt="Großansicht">
         <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; Triebfahrzeugführer 2026 Klasse 14. Alle Rechte vorbehalten.</p>
     </footer>
 
-    <!-- JavaScript für die Großansicht -->
     <script>
         function openLightbox(imgElement, captionText) {
             const lightbox = document.getElementById('lightbox');
