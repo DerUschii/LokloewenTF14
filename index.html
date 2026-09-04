@@ -73,30 +73,55 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
-        /* Button für Loklöwenwelpen */
-        .welpen-btn {
+        /* Putlitz Button */
+        .putlitz-btn {
             background: linear-gradient(135deg, #ff6600, #ffaa00);
             color: #000;
             font-weight: 800;
-            font-size: 1rem;
-            padding: 12px 24px;
+            font-size: 0.95rem;
+            padding: 10px 20px;
             border-radius: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-decoration: none;
-            box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+        }
+
+        .putlitz-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 25px rgba(255, 170, 0, 0.8);
+            background: linear-gradient(135deg, #ffaa00, #ffffff);
+        }
+
+        /* Button für Loklöwenwelpen */
+        .welpen-btn {
+            background: rgba(255, 102, 0, 0.15);
+            color: #fff;
+            border: 1px solid rgba(255, 102, 0, 0.6);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .welpen-btn:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 170, 0, 0.9);
-            background: linear-gradient(135deg, #ffaa00, #ffffff);
+            background: var(--primary-fire);
+            color: #000;
+            box-shadow: 0 0 20px var(--glow-color);
         }
 
         /* Discord Button */
@@ -105,8 +130,8 @@
             color: #fff;
             border: 1px solid rgba(255, 69, 0, 0.5);
             font-weight: 700;
-            font-size: 1rem;
-            padding: 12px 22px;
+            font-size: 0.95rem;
+            padding: 10px 20px;
             border-radius: 8px;
             text-transform: uppercase;
             text-decoration: none;
@@ -278,7 +303,41 @@
             line-height: 1.5;
         }
 
-        /* Section: Loklöwenwelpen */
+        /* Section: Praxis in Putlitz */
+        .putlitz-section {
+            background: rgba(20, 10, 5, 0.8);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .putlitz-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .info-box h4 {
+            color: var(--bright-gold);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Section: Bilder von Loklöwenwelpen */
         .welpen-section {
             background: rgba(20, 10, 5, 0.8);
             border: 1px solid rgba(255, 102, 0, 0.3);
@@ -335,7 +394,7 @@
             background: #040201;
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 950px) {
             nav {
                 flex-direction: column;
                 gap: 15px;
@@ -352,6 +411,9 @@
     <nav>
         <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
         <div class="nav-links">
+            <a href="#putlitz" class="nav-btn putlitz-btn">
+                <i class="fas fa-train"></i> Praxis in Putlitz
+            </a>
             <a href="#welpen" class="nav-btn welpen-btn">
                 <i class="fas fa-paw"></i> Loklöwenwelpen
             </a>
@@ -437,6 +499,32 @@
                 <p>Wir sind pünktlich, halten unser Wort, fangen uns gegenseitig auf und achten auch auf die mentale Gesundheit füreinander – unsere Etikette gibt unserem Auftreten Richtung und Würde.</p>
             </div>
         </div>
+
+        <!-- Praxis in Putlitz Section -->
+        <section id="putlitz" class="putlitz-section">
+            <div class="section-header" style="margin-top: 0;">
+                <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
+            </div>
+            
+            <p style="text-align: center; color: var(--text-muted);">Alle wichtigen Informationen, Ablaufpläne und Unterlagen zu unseren Praxis-Tagen am Standort Putlitz.</p>
+
+            <div class="putlitz-content">
+                <div class="info-box">
+                    <h4><i class="fas fa-calendar-alt"></i> Termine & Ablauf</h4>
+                    <p>Hier findest du demnächst die aktuellen Praxistermine, Uhrzeiten und den Schichtplan für die Praxisausbildung.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-map-marker-alt"></i> Anfahrt & Treffpunkt</h4>
+                    <p>Treffpunkt ist am Bahnhof Putlitz. Bitte bringt eure Sicherheitskleidung (PSA) vollständig mit.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Vorbereitung</h4>
+                    <p>Überprüft vor Antritt der Praxisphase die relevanten Regelwerke und Checklisten im Discord-Kanal.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Section: Bilder von Loklöwenwelpen -->
         <section id="welpen" class="welpen-section">
