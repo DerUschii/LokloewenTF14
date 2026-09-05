@@ -3,158 +3,951 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loklöwenwelpen Chat</title>
+    <title>Triebfahrzeugführer 2026 Klasse 14</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+        :root {
+            --bg-color: #080402;
+            --card-bg: rgba(23, 13, 8, 0.7);
+            --primary-fire: #ff4500;
+            --secondary-orange: #ff6600;
+            --bright-gold: #ffb700;
+            --glow-color: rgba(255, 69, 0, 0.4);
+            --text-color: #f5f5f5;
+            --text-muted: #a3958c;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 183, 0, 0.05), transparent 40%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            box-sizing: border-box;
         }
-        .chat-container {
+
+        /* Top Navigation Bar */
+        nav {
             width: 100%;
-            max-width: 600px;
-            background: #ffffff;
-            padding: 20px;
+            max-width: 1200px;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 69, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 4, 2, 0.9);
+        }
+
+        .nav-brand {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .nav-brand span {
+            color: var(--primary-fire);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 8px 16px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
         }
+
+        /* Putlitz Button */
+        .putlitz-btn {
+            background: linear-gradient(135deg, #ff6600, #ffaa00);
+            color: #000;
+            font-weight: 800;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+        }
+
+        .putlitz-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 25px rgba(255, 170, 0, 0.8);
+            background: linear-gradient(135deg, #ffaa00, #ffffff);
+        }
+
+        /* Button für Loklöwenwelpen */
+        .welpen-btn {
+            background: rgba(255, 102, 0, 0.15);
+            color: #fff;
+            border: 1px solid rgba(255, 102, 0, 0.6);
+        }
+
+        .welpen-btn:hover {
+            background: var(--primary-fire);
+            color: #000;
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        /* App / Chat Button */
+        .chat-nav-btn {
+            background: linear-gradient(135deg, var(--primary-fire), var(--bright-gold));
+            color: #000;
+            font-weight: 800;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+        }
+
+        .chat-nav-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 25px rgba(255, 183, 0, 0.8);
+        }
+
+        /* Discord Button */
+        .discord-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 69, 0, 0.5);
+        }
+
+        .discord-btn:hover {
+            background: var(--primary-fire);
+            color: #000;
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px 30px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, var(--primary-fire) 0%, transparent 70%);
+            opacity: 0.5;
+            filter: blur(30px);
+            z-index: 1;
+        }
+
+        .logo-img {
+            position: relative;
+            z-index: 2;
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            padding: 5px;
+            background: rgba(255, 69, 0, 0.05);
+            border: 2px solid rgba(255, 102, 0, 0.5);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.03);
+        }
+
         h1 {
-            font-size: 1.5rem;
-            color: #333;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .welcome-text {
-            text-align: center;
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        .chat-messages {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            height: 350px;
-            overflow-y: auto;
-            padding: 10px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 15px;
-            background: #fafafa;
+            background: linear-gradient(180deg, #ffffff 0%, var(--bright-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
-        .message {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            background: #e2e8f0;
-            word-wrap: break-word;
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 30px;
         }
-        .message span {
-            font-weight: bold;
+
+        /* Layout & Sections */
+        .main-container {
+            max-width: 1100px;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
             display: block;
-            font-size: 0.8rem;
-            color: #4a5568;
-            margin-bottom: 2px;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-fire), transparent);
+            margin: 10px auto 0;
         }
-        .chat-input-area {
+
+        /* Internal App / Chat Section */
+        .app-section {
+            background: rgba(20, 10, 5, 0.95);
+            border: 2px solid rgba(255, 102, 0, 0.5);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.2);
+        }
+
+        .app-tabs {
             display: flex;
             gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
         }
-        input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        button {
+
+        .app-tab-btn {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            color: var(--text-muted);
             padding: 10px 20px;
-            background-color: #3182ce;
-            color: white;
-            border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        button:hover {
-            background-color: #2b6cb0;
+
+        .app-tab-btn.active, .app-tab-btn:hover {
+            background: var(--primary-fire);
+            color: #000;
+            border-color: var(--bright-gold);
+            box-shadow: 0 0 15px var(--glow-color);
         }
-        .footer-links {
+
+        .app-tab-content {
+            display: none;
+        }
+
+        .app-tab-content.active {
+            display: block;
+        }
+
+        /* Chat UI */
+        .chat-box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-message {
+            background: rgba(255, 102, 0, 0.1);
+            border-left: 3px solid var(--primary-fire);
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
+            max-width: 80%;
+        }
+
+        .chat-message .sender {
+            font-size: 0.8rem;
+            color: var(--bright-gold);
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 15px;
+            background: rgba(10, 5, 2, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            gap: 10px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 102, 0, 0.4);
+            padding: 12px;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+        }
+
+        .chat-input-area input:focus {
+            border-color: var(--bright-gold);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .send-btn {
+            background: var(--primary-fire);
+            color: #000;
+            border: none;
+            padding: 0 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .send-btn:hover {
+            background: var(--bright-gold);
+        }
+
+        /* Rules Grid */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .rule-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-fire), var(--bright-gold));
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 69, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color);
+        }
+
+        .rule-card:hover::before {
+            opacity: 1;
+            width: 5px;
+        }
+
+        .rule-badge {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--bright-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .rule-card h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .rule-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Section: Unsere Trainingsmodule */
+        .modules-section {
+            background: rgba(20, 10, 5, 0.8);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             text-align: center;
+        }
+
+        .modules-image-container {
+            margin-top: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 102, 0, 0.4);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .modules-image-container:hover {
+            transform: scale(1.01);
+            border-color: var(--primary-fire);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
+        }
+
+        .modules-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Section: Praxis in Putlitz */
+        .putlitz-section {
+            background: rgba(20, 10, 5, 0.8);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .putlitz-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .info-box h4 {
+            color: var(--bright-gold);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Section: Bilder von Loklöwenwelpen */
+        .welpen-section {
+            background: rgba(20, 10, 5, 0.8);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .welpen-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-fire);
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .gallery-card img:hover {
+            opacity: 0.9;
+        }
+
+        .gallery-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--bright-gold);
+            font-size: 0.95rem;
+        }
+
+        /* Lightbox Modal für Großansicht */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-modal img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
+            border: 1px solid rgba(255, 102, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            color: var(--bright-gold);
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-fire);
+        }
+
+        /* Footer & Footer Links im kleinen blauen Stil */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: #040201;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-links {
             font-size: 0.8rem;
         }
+
         .footer-links a {
             color: #3182ce;
             text-decoration: none;
             margin: 0 8px;
         }
+
         .footer-links a:hover {
             text-decoration: underline;
+        }
+
+        @media (max-width: 950px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="chat-container">
-        <h1>Loklöwenwelpen Chat</h1>
-        <div class="welcome-text">Willkommen im Loklöwenwelpen Chat der Klasse 14! Wenn Ihr Welpen seid, dann schnackt einfach, wenn Ihr Interessenten seid, dann fragt uns!</div>
-        
-        <div class="chat-messages" id="chatMessages">
-            <!-- Nachrichten werden hier angezeigt -->
+    <!-- Top Navigation Bar -->
+    <nav>
+        <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
+        <div class="nav-links">
+            <a href="#lernapp" class="nav-btn chat-nav-btn">
+                <i class="fas fa-comments"></i> Loklöwenwelpen Chat
+            </a>
+            <a href="#putlitz" class="nav-btn putlitz-btn">
+                <i class="fas fa-train"></i> Praxis in Putlitz
+            </a>
+            <a href="#welpen" class="nav-btn welpen-btn">
+                <i class="fas fa-paw"></i> Loklöwenwelpen
+            </a>
+            <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn discord-btn">
+                <i class="fab fa-discord"></i> Discord Joinen
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="logo-wrapper">
+            <img src="1000194537.jpeg" alt="Loklöwen Logo" class="logo-img" onclick="openLightbox(this, 'Loklöwen-Logo')">
+        </div>
+        <h1>Triebfahrzeugführer Klasse 14</h1>
+        <p class="subtitle">Willkommen in unserer Community. Hier findest du unsere Richtlinien für erfolgreiches und gemeinsames Lernen auf Augenhöhe.</p>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+
+        <!-- Musik-Player ganz oben über den Geboten -->
+        <div style="text-align: center; margin: 0 auto 40px auto; padding: 20px; background: rgba(20, 10, 5, 0.8); border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+            <h4 style="color: #ffb700; margin-bottom: 10px; font-size: 1rem;"><i class="fas fa-music"></i> Loklöwen Soundtrack</h4>
+            <audio controls autoplay loop style="width: 100%;">
+                <source src="hintergrundmusik.mp3" type="audio/mpeg">
+                Dein Browser unterstützt kein Audio-element.
+            </audio>
+            <p style="font-size: 0.8rem; color: #a3958c; margin-top: 8px;">Läuft automatisch & in Dauerschleife</p>
         </div>
 
-        <div class="chat-input-area">
-            <input type="text" id="usernameInput" placeholder="Dein Name..." style="max-width: 120px;">
-            <input type="text" id="messageInput" placeholder="Schreibe eine Nachricht..." autofocus>
-            <button onclick="sendMessage()">Senden</button>
+        <!-- LOKLÖWENWELPEN CHAT SEKTION -->
+        <section id="lernapp" class="app-section">
+            <div class="section-header" style="margin-top: 0;">
+                <h2 class="section-title"><i class="fas fa-comments"></i> Loklöwenwelpen Chat</h2>
+            </div>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Willkommen im Loklöwenwelpen Chat der Klasse 14! Wenn Ihr Welpen seid, dann schnackt einfach, wenn Ihr Interessenten seid, dann fragt uns!</p>
+
+            <div class="app-tabs">
+                <button class="app-tab-btn active" onclick="switchTab(event, 'tab-groupchat')"><i class="fas fa-users"></i> Klassen-Chat</button>
+                <button class="app-tab-btn" onclick="switchTab(event, 'tab-materials')"><i class="fas fa-folder-open"></i> Lernmaterialien</button>
+                <button class="app-tab-btn" onclick="switchTab(event, 'tab-video')"><i class="fas fa-video"></i> Videocall</button>
+            </div>
+
+            <!-- Tab 1: Klassen-Chat -->
+            <div id="tab-groupchat" class="app-tab-content active">
+                <div class="chat-box">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message">
+                            <div class="sender">System / Loklöwen-Bot</div>
+                            <div class="text">Willkommen im Loklöwenwelpen Chat! Schnackt euch frei oder fragt uns bei Interesse.</div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatNameInput" placeholder="Dein Name..." style="max-width: 150px;">
+                        <input type="text" id="chatTextInput" placeholder="Nachricht eingeben..." onkeypress="handleChatPress(event)">
+                        <button class="send-btn" onclick="sendChatMessage()">Senden</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Lernmaterialien -->
+            <div id="tab-materials" class="app-tab-content">
+                <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                    <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-cloud-upload-alt"></i> Skripte & Notizen tauschen</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Hier könnt ihr Zusammenfassungen und Lernfragen für die Prüfung ablegen.</p>
+                    <input type="file" id="fileUpload" style="color: #fff; margin-bottom: 15px;"><br>
+                    <button class="send-btn" onclick="alert('Datei-Upload vorbereitet!')">Datei hochladen</button>
+                </div>
+            </div>
+
+            <!-- Tab 3: Videocall -->
+            <div id="tab-video" class="app-tab-content">
+                <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                    <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-video"></i> Loklöwen Lern-Videocall</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px;">Trefft euch virtuell zum gemeinsamen Pauken und Vorbereiten auf die Praxisphasen.</p>
+                    <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn putlitz-btn" style="display: inline-flex; text-decoration: none;">
+                        <i class="fab fa-discord"></i> Zum Klassen-Call auf Discord
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-header">
+            <h2 class="section-title">Unsere 10 Gebote</h2>
         </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #01</div>
+                <h3>Respektvoll miteinander umgehen</h3>
+                <p>Wir begegnen uns wertschätzend und auf Augenhöhe, hören einander zu und lassen jeden ausreden.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #02</div>
+                <h3>Zusammenhalt & Teamwork</h3>
+                <p>Wir arbeiten als Team, ziehen an einem Strang, lassen unser Ego draußen und niemanden zurück – Sicherheit und Teamarbeit stehen über Rechthaben.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #03</div>
+                <h3>Akzeptanz & Offenheit</h3>
+                <p>Wir akzeptieren unterschiedliche Meinungen, Stärken und Schwächen.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #04</div>
+                <h3>Lernkultur & Fehlerkultur</h3>
+                <p>Wir hinterfragen unser eigenes Verhalten, sprechen Probleme, Meinungsverschiedenheiten und Fehler ehrlich an und lernen gemeinsam daraus – auch damit sie später nicht im Betrieb passieren.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #05</div>
+                <h3>Verständnis & Tiefe</h3>
+                <p>Wir wollen Zusammenhänge wirklich verstehen, nicht nur Inhalte auswendig lernen.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #06</div>
+                <h3>Demokratie</h3>
+                <p>Wichtige Entscheidungen treffen wir gemeinsam und fair.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #07</div>
+                <h3>Ansporn & Motivation</h3>
+                <p>Herausforderungen motivieren uns, Lösungen zu finden.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #08</div>
+                <h3>Zielorientiertes Arbeiten</h3>
+                <p>Wir arbeiten konzentriert, verfolgen unsere gemeinsamen Ziele und verlieren dabei unsere eigenen nicht aus den Augen.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #09</div>
+                <h3>Verantwortung</h3>
+                <p>Jeder übernimmt Verantwortung für die Gruppe, seine Aufgaben und seinen Beitrag – wir lernen nicht nur für Prüfungen, sondern für Situationen, in denen andere auf unsere Entscheidungen vertrauen.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-badge">Gebot #10</div>
+                <h3>Zuverlässigkeit & Etikette</h3>
+                <p>Wir sind pünktlich, halten unser Wort, fangen uns gegenseitig auf und achten auch auf die mentale Gesundheit füreinander – unsere Etikette gibt unserem Auftreten Richtung und Würde.</p>
+            </div>
+        </div>
+
+        <!-- Unsere Trainingsmodule Sektion direkt unter den Geboten -->
+        <section class="modules-section">
+            <div class="section-header" style="margin-top: 0;">
+                <h2 class="section-title"><i class="fas fa-book-open"></i> Unsere Trainingsmodule</h2>
+            </div>
+            <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">Übersicht über alle Module und Fächer unserer Ausbildung zum Triebfahrzeugführer Klasse 14.</p>
+            
+            <div class="modules-image-container" onclick="openLightbox(this.querySelector('img'), 'Modul-Übersicht TF14')">
+                <img src="file_000000009298820a86c9af6fa1b84dfc.png" alt="Modul-Übersicht TF14">
+            </div>
+            <p style="font-size: 0.85rem; color: var(--bright-gold); margin-top: 10px;"><i class="fas fa-search-plus"></i> Klicke auf das Bild, um es in Großansicht zu öffnen</p>
+        </section>
+
+        <!-- Praxis in Putlitz Section -->
+        <section id="putlitz" class="putlitz-section">
+            <div class="section-header" style="margin-top: 0;">
+                <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
+            </div>
+            
+            <p style="text-align: center; color: var(--text-muted);">Alle wichtigen Informationen, Ablaufpläne und Unterlagen zu unseren Praxis-Tagen am Standort Putlitz.</p>
+
+            <div class="putlitz-content">
+                <div class="info-box">
+                    <h4><i class="fas fa-calendar-alt"></i> Termine & Ablauf</h4>
+                    <p>Hier findest du demnächst die aktuellen Praxistermine, Uhrzeiten und den Schichtplan für die Praxisausbildung.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-map-marker-alt"></i> Anfahrt & Treffpunkt</h4>
+                    <p>Treffpunkt ist am Bahnhof Putlitz. Bitte bringt eure Sicherheitskleidung (PSA) vollständig mit.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Vorbereitung</h4>
+                    <p>Überprüft vor Antritt der Praxisphase die relevanten Regelwerke und Checklisten im Discord-Kanal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Bilder von Loklöwenwelpen -->
+        <section id="welpen" class="welpen-section">
+            <div class="section-header" style="margin-top: 0;">
+                <h2 class="section-title"><i class="fas fa-paw"></i> Bilder von Loklöwenwelpen</h2>
+            </div>
+            
+            <p style="text-align: center; color: var(--text-muted);">Unsere Nachwuchs-Löwen im Training für die Schiene!</p>
+
+            <div class="welpen-gallery">
+                <div class="gallery-card">
+                    <img src="lok.jpg" alt="Loklöwenwelpe 1" onclick="openLightbox(this, 'by Dominik')">
+                    <div class="gallery-caption">by Dominik</div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="lok2.jpg" alt="Lok2" onclick="openLightbox(this, 'by Mattis')">
+                    <div class="gallery-caption">by Mattis</div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="welpe3.jpg" alt="Loklöwenwelpe 3" onclick="openLightbox(this, 'Bereit für die Praxis')">
+                    <div class="gallery-caption">Bereit für die Praxis</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Großansicht">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 
-    <div class="footer-links">
-        <a href="https://webmail.strato.de" target="_blank">Strato</a> | 
-        <a href="#" target="_blank">Publisher</a> | 
-        <a href="https://lernwelt-lokloewen.de/login" target="_blank">Lernwelten</a>
-    </div>
+    <!-- Footer mit den 3 Links -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://webmail.strato.de" target="_blank">Strato</a> | 
+            <a href="#" target="_blank">Publisher</a> | 
+            <a href="https://lernwelt-lokloewen.de/login" target="_blank">Lernwelten</a>
+        </div>
+        <p>&copy; Triebfahrzeugführer 2026 Klasse 14. Alle Rechte vorbehalten.</p>
+    </footer>
 
+    <!-- JavaScript für Großansicht, Tabs und Chat -->
     <script>
-        // Einfache lokale Chat-Funktion (Simulation für den Anfang)
-        function sendMessage() {
-            const usernameInput = document.getElementById('usernameInput');
-            const messageInput = document.getElementById('messageInput');
-            const chatMessages = document.getElementById('chatMessages');
+        function openLightbox(imgElement, captionText) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
 
-            if (messageInput.value.trim() === '') return;
-
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message');
-
-            const userSpan = document.createElement('span');
-            userSpan.textContent = usernameInput.value.trim() !== '' ? usernameInput.value.trim() : 'Anonym';
-
-            const textNode = document.createTextNode(messageInput.value);
-
-            messageDiv.appendChild(userSpan);
-            messageDiv.appendChild(textNode);
-            chatMessages.appendChild(messageDiv);
-
-            // Nach unten scrollen
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            // Eingabefeld für Nachricht leeren
-            messageInput.value = '';
+            lightboxImg.src = imgElement.src;
+            lightboxCaption.textContent = captionText;
+            lightbox.classList.add('active');
         }
 
-        // Auch mit Enter-Taste abschicken
-        document.getElementById('messageInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                sendMessage();
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+
+        function switchTab(event, tabId) {
+            const contents = document.querySelectorAll('.app-tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.app-tab-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function sendChatMessage() {
+            const nameInput = document.getElementById('chatNameInput');
+            const textInput = document.getElementById('chatTextInput');
+            const messagesContainer = document.getElementById('chatMessages');
+
+            if (textInput.value.trim() === '') return;
+
+            const senderName = nameInput.value.trim() !== '' ? nameInput.value.trim() : 'Loklöwe';
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message';
+            messageDiv.innerHTML = `
+                <div class="sender">${escapeHtml(senderName)}</div>
+                <div class="text">${escapeHtml(textInput.value)}</div>
+            `;
+
+            messagesContainer.appendChild(messageDiv);
+            textInput.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChatPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
             }
-        });
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
     </script>
 
 </body>
