@@ -88,6 +88,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
         }
 
         /* Putlitz Button */
@@ -115,6 +116,19 @@
             background: var(--primary-fire);
             color: #000;
             box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        /* App / Chat Button */
+        .chat-nav-btn {
+            background: linear-gradient(135deg, var(--primary-fire), var(--bright-gold));
+            color: #000;
+            font-weight: 800;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+        }
+
+        .chat-nav-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 25px rgba(255, 183, 0, 0.8);
         }
 
         /* Discord Button */
@@ -228,6 +242,128 @@
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--primary-fire), transparent);
             margin: 10px auto 0;
+        }
+
+        /* Internal App / Chat Section */
+        .app-section {
+            background: rgba(20, 10, 5, 0.95);
+            border: 2px solid rgba(255, 102, 0, 0.5);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.2);
+        }
+
+        .app-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .app-tab-btn {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-tab-btn.active, .app-tab-btn:hover {
+            background: var(--primary-fire);
+            color: #000;
+            border-color: var(--bright-gold);
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+
+        .app-tab-content {
+            display: none;
+        }
+
+        .app-tab-content.active {
+            display: block;
+        }
+
+        /* Chat UI */
+        .chat-box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-message {
+            background: rgba(255, 102, 0, 0.1);
+            border-left: 3px solid var(--primary-fire);
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
+            max-width: 80%;
+        }
+
+        .chat-message .sender {
+            font-size: 0.8rem;
+            color: var(--bright-gold);
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 15px;
+            background: rgba(10, 5, 2, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            gap: 10px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 102, 0, 0.4);
+            padding: 12px;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+        }
+
+        .chat-input-area input:focus {
+            border-color: var(--bright-gold);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .send-btn {
+            background: var(--primary-fire);
+            color: #000;
+            border: none;
+            padding: 0 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .send-btn:hover {
+            background: var(--bright-gold);
         }
 
         /* Rules Grid */
@@ -490,6 +626,9 @@
     <nav>
         <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
         <div class="nav-links">
+            <a href="#lernapp" class="nav-btn chat-nav-btn">
+                <i class="fas fa-comments"></i> Lern- & Chat-Zentrale
+            </a>
             <a href="#putlitz" class="nav-btn putlitz-btn">
                 <i class="fas fa-train"></i> Praxis in Putlitz
             </a>
@@ -523,6 +662,58 @@
             </audio>
             <p style="font-size: 0.8rem; color: #a3958c; margin-top: 8px;">Läuft automatisch & in Dauerschleife</p>
         </div>
+
+        <!-- NEUE INTERNE LERN- & CHAT-APP SEKTION -->
+        <section id="lernapp" class="app-section">
+            <div class="section-header" style="margin-top: 0;">
+                <h2 class="section-title"><i class="fas fa-comments"></i> Interne Lern- & Chat-Zentrale</h2>
+            </div>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Eure direkte Plattform für den Austausch unter den Loklöwenwelpen.</p>
+
+            <div class="app-tabs">
+                <button class="app-tab-btn active" onclick="switchTab(event, 'tab-groupchat')"><i class="fas fa-users"></i> Klassen-Chat</button>
+                <button class="app-tab-btn" onclick="switchTab(event, 'tab-materials')"><i class="fas fa-folder-open"></i> Lernmaterialien</button>
+                <button class="app-tab-btn" onclick="switchTab(event, 'tab-video')"><i class="fas fa-video"></i> Videocall</button>
+            </div>
+
+            <!-- Tab 1: Klassen-Chat -->
+            <div id="tab-groupchat" class="app-tab-content active">
+                <div class="chat-box">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message">
+                            <div class="sender">System / Loklöwen-Bot</div>
+                            <div class="text">Willkommen in der internen Chat-Zentrale der Klasse 14! Tauscht euch hier über Lernstoff aus.</div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatNameInput" placeholder="Dein Name..." style="max-width: 150px;">
+                        <input type="text" id="chatTextInput" placeholder="Nachricht eingeben..." onkeypress="handleChatPress(event)">
+                        <button class="send-btn" onclick="sendChatMessage()">Senden</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Lernmaterialien -->
+            <div id="tab-materials" class="app-tab-content">
+                <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                    <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-cloud-upload-alt"></i> Skripte & Notizen tauschen</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Hier könnt ihr Zusammenfassungen und Lernfragen für die Prüfung ablegen.</p>
+                    <input type="file" id="fileUpload" style="color: #fff; margin-bottom: 15px;"><br>
+                    <button class="send-btn" onclick="alert('Datei-Upload vorbereitet! (Verknüpfung folgt in Kürze)')">Datei hochladen</button>
+                </div>
+            </div>
+
+            <!-- Tab 3: Videocall -->
+            <div id="tab-video" class="app-tab-content">
+                <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                    <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-video"></i> Loklöwen Lern-Videocall</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px;">Trefft euch virtuell zum gemeinsamen Pauken und Vorbereiten auf die Praxisphasen.</p>
+                    <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn putlitz-btn" style="display: inline-flex; text-decoration: none;">
+                        <i class="fab fa-discord"></i> Zum Klassen-Call auf Discord
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <div class="section-header">
             <h2 class="section-title">Unsere 10 Gebote</h2>
@@ -668,7 +859,7 @@
         <p>&copy; Triebfahrzeugführer 2026 Klasse 14. Alle Rechte vorbehalten.</p>
     </footer>
 
-    <!-- JavaScript für die Großansicht -->
+    <!-- JavaScript für die Großansicht & Chat-App -->
     <script>
         function openLightbox(imgElement, captionText) {
             const lightbox = document.getElementById('lightbox');
@@ -683,6 +874,55 @@
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('active');
+        }
+
+        function switchTab(event, tabId) {
+            const contents = document.querySelectorAll('.app-tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.app-tab-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function sendChatMessage() {
+            const nameInput = document.getElementById('chatNameInput');
+            const textInput = document.getElementById('chatTextInput');
+            const messagesContainer = document.getElementById('chatMessages');
+
+            if (textInput.value.trim() === '') return;
+
+            const senderName = nameInput.value.trim() !== '' ? nameInput.value.trim() : 'Loklöwe';
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message';
+            messageDiv.innerHTML = `
+                <div class="sender">${escapeHtml(senderName)}</div>
+                <div class="text">${escapeHtml(textInput.value)}</div>
+            `;
+
+            messagesContainer.appendChild(messageDiv);
+            textInput.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChatPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
     </script>
 
