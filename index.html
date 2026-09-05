@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LokLöwen - Lern- & Chat-Zentrale</title>
+    <title>LokLöwen Lern- & Chat-Zentrale</title>
     <style>
         :root {
             --bg-color: #121212;
@@ -51,14 +51,13 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 30px;
-            flex-wrap: wrap;
         }
 
         .tab-btn {
             background-color: var(--card-bg);
             color: var(--text-color);
             border: 1px solid var(--border-color);
-            padding: 10px 15px;
+            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
@@ -77,21 +76,6 @@
 
         .section.active {
             display: block;
-        }
-
-        /* Allgemeine Boxen & Inhalte */
-        .content-box {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .content-box h2 {
-            color: var(--accent-color);
-            margin-top: 0;
         }
 
         /* FAQ / Lernkarten Style */
@@ -126,23 +110,6 @@
 
         .card.active .answer {
             display: block;
-        }
-
-        /* Buttons im Text (z.B. Discord) */
-        .btn-discord {
-            display: inline-block;
-            background-color: #5865F2;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .btn-discord:hover {
-            background-color: #4752C4;
         }
 
         /* Chat / Notizen Bereich */
@@ -198,79 +165,29 @@
     </header>
 
     <div class="container">
-        <!-- Navigation zwischen den Bereichen -->
+        <!-- Navigation zwischen Bereichen -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('faq')">📖 Handbuch-FAQ</button>
-            <button class="tab-btn" onclick="switchTab('welpen')">🐾 LokLöwen-Welpen</button>
-            <button class="tab-btn" onclick="switchTab('putlitz')">🛠️ Praxis in Putlitz</button>
-            <button class="tab-btn" onclick="switchTab('gebote')">📜 Die 10 Gebote</button>
-            <button class="tab-btn" onclick="switchTab('chat')">💬 Chat & Discord</button>
+            <button class="tab-btn tab-btn-custom" onclick="switchTab('chat')">💬 Lern- & Chat-Zentrale</button>
         </div>
 
-        <!-- Sektion 1: FAQ / Lernkarten aus dem Handbuch (Neu eingefügt) -->
+        <!-- Sektion 1: FAQ / Lernkarten aus dem Handbuch -->
         <div id="faq-section" class="section active">
             <h2>Wichtige Fragen & Antworten („Lernen lernen“)</h2>
-            <p class="subtitle" style="margin-bottom: 20px;">Klicke auf eine Frage aus dem Handbuch, um die Erklärung anzuzeigen.</p>
+            <p class="subtitle" style="margin-bottom: 20px;">Klicke auf eine Frage, um die Antwort und Erklärung anzuzeigen.</p>
             <div id="faq-container">
                 <!-- Wird per JavaScript befüllt -->
             </div>
         </div>
 
-        <!-- Sektion 2: LokLöwen-Welpen -->
-        <div id="welpen-section" class="section">
-            <div class="content-box">
-                <h2>LokLöwen-Welpen (Klasse 14)</h2>
-                <p>Hier schlägt das Herz unseres Kurses! Die LokLöwen-Welpen halten zusammen, wenn es um Vorschriften, Signale und den harten Ausbildungsalltag geht.</p>
-                <p><em>„Gemeinsam durch jede Prüfung – kein Triebfahrzeugführer bleibt zurück!“</em></p>
-            </div>
-        </div>
-
-        <!-- Sektion 3: Praxis in Putlitz -->
-        <div id="putlitz-section" class="section">
-            <div class="content-box">
-                <h2>Praxis in Putlitz</h2>
-                <p>Hier findet der praktische Teil unserer Ausbildung statt. Strecke, Fahrzeuge, Rangieren und das echte Eisenbahner-Handwerk unter realen Bedingungen.</p>
-                <ul>
-                    <li>Fahrzeugkunde & Vorbereitungsdienst</li>
-                    <li>Rangierbetrieb & Wagenprüfung</li>
-                    <li>Praktische Simulator- und Streckenfahrten</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Sektion 4: Die 10 Gebote -->
-        <div id="gebote-section" class="section">
-            <div class="content-box">
-                <h2>Die 10 Gebote der LokLöwen</h2>
-                <ol style="line-height: 1.8;">
-                    <li>Du sollst die Dienstvorschriften heiligen und stets aktuell halten.</li>
-                    <li>Du sollst niemals ohne gültige La (Liegende Anweisung / Fahrplan) das Gleis betreten.</li>
-                    <li>Der Bremszettel ist dein bester Freund – verlasse dich nie nur auf Vermutungen.</li>
-                    <li>Ein Blick zu viel aus dem Seitenfenster schadet nie.</li>
-                    <li>Der Kaffeebecher im Führerstand muss sicher stehen.</li>
-                    <li>Gemeinsames Lernen im Kurs bringt alle schneller ans Ziel.</li>
-                    <li>Fragen stellen ist keine Sch Schwäche, sondern zeugt von Verantwortungsbewusstsein.</li>
-                    <li>Vor der Abfahrt gilt: Vollständige Ausrüstung und wachsamer Verstand.</li>
-                    <li>Respektiere die Technik und unterschätze niemals die Kräfte auf der Schiene.</li>
-                    <li>Am Ende kommen alle sicher nach Hause!</li>
-                </ol>
-            </div>
-        </div>
-
-        <!-- Sektion 5: Chat & Discord -->
+        <!-- Sektion 2: Chat & Notizen -->
         <div id="chat-section" class="section">
-            <div class="content-box">
-                <h2>Community & Discord</h2>
-                <p>Du möchtest dich mit den anderen austauschen oder direkt in den Sprachkanal? Komm auf unseren Server!</p>
-                <a href="https://discord.gg/DEINEN_LINK" target="_blank" class="btn-discord">💬 Dem LokLöwen-Discord beitreten</a>
-            </div>
-
-            <h2>Lokale Notizen & Kurs-Chat</h2>
+            <h2>Kurs-Chat & Notizen</h2>
             <div class="chat-box" id="chat-messages">
-                <p><strong>System:</strong> Willkommen in der lokalen Notiz-Zentrale!</p>
+                <p><strong>System:</strong> Willkommen in der Lern- & Chat-Zentrale! Tausche dich hier mit anderen aus oder sichere deine Notizen.</p>
             </div>
             <div class="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Notiz eingeben...">
+                <input type="text" id="chat-input" placeholder="Nachricht oder Notiz eingeben...">
                 <button onclick="sendMessage()">Senden</button>
             </div>
         </div>
@@ -281,7 +198,7 @@
     </footer>
 
     <script>
-        // Die Fragen und Antworten aus dem Handbuch „Lernen lernen“
+        // Die Fragen und Antworten aus dem Handbuch (mit korrekten Quellenangaben)
         const lokLoewenFragen = [
           {
             frage: "Warum ist 'Lernen lernen' in Eisenbahnberufen so entscheidend?",
@@ -332,28 +249,21 @@
             faqContainer.appendChild(card);
         });
 
-        // Tab-Wechsel Logik für alle Reiter
+        // Tab-Wechsel Logik
         function switchTab(tabName) {
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
             if (tabName === 'faq') {
                 document.getElementById('faq-section').classList.add('active');
-            } else if (tabName === 'welpen') {
-                document.getElementById('welpen-section').classList.add('active');
-            } else if (tabName === 'putlitz') {
-                document.getElementById('putlitz-section').classList.add('active');
-            } else if (tabName === 'gebote') {
-                document.getElementById('gebote-section').classList.add('active');
+                event.currentTarget.classList.add('active');
             } else if (tabName === 'chat') {
                 document.getElementById('chat-section').classList.add('active');
+                event.currentTarget.classList.add('active');
             }
-
-            // Den passenden Button aktiv schalten
-            event.currentTarget.classList.add('active');
         }
 
-        // Einfache Notiz-Funktion
+        // Einfache Chat/Notiz-Funktion (lokal im Browser)
         function sendMessage() {
             const input = document.getElementById('chat-input');
             const chatBox = document.getElementById('chat-messages');
@@ -368,6 +278,7 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
+        // Enter-Taste im Chat
         document.getElementById('chat-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 sendMessage();
