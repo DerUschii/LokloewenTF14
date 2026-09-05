@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triebfahrzeugführer 2026 Klasse 14 - Intern</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    </script>
     <style>
         :root {
             --bg-color: #080402;
@@ -441,7 +445,7 @@
             background: var(--primary-fire);
             color: #000;
             border: none;
-            padding: 0 20px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
@@ -452,7 +456,7 @@
             background: var(--bright-gold);
         }
 
-        /* Lern-Trainer UI Styles */
+        /* Flashcard Trainer UI Styles */
         .trainer-card {
             background: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(255, 102, 0, 0.3);
@@ -461,41 +465,35 @@
             text-align: center;
         }
 
-        .trainer-question {
-            font-size: 1.25rem;
-            color: #fff;
+        .pdf-upload-box {
+            background: rgba(255, 102, 0, 0.08);
+            border: 2px dashed rgba(255, 102, 0, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .flashcard {
+            background: rgba(15, 8, 4, 0.9);
+            border: 2px solid rgba(255, 183, 0, 0.4);
+            border-radius: 12px;
+            padding: 35px 25px;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
-            font-weight: bold;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
         }
 
-        .trainer-input {
-            width: 100%;
-            max-width: 500px;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 102, 0, 0.5);
-            border-radius: 8px;
+        .flashcard-text {
+            font-size: 1.2rem;
             color: #fff;
-            font-size: 1rem;
-            text-align: center;
-            margin-bottom: 15px;
-            outline: none;
-        }
-
-        .trainer-input:focus {
-            border-color: var(--bright-gold);
-            box-shadow: 0 0 10px var(--glow-color);
-        }
-
-        .trainer-feedback {
-            margin-top: 15px;
-            font-size: 1rem;
-            font-weight: bold;
-            min-height: 30px;
+            line-height: 1.5;
         }
 
         .trainer-stats {
-            margin-top: 20px;
+            margin-top: 15px;
             font-size: 0.9rem;
             color: var(--text-muted);
         }
@@ -775,7 +773,6 @@
 </head>
 <body>
 
-    <!-- Passwordsperre -->
     <div id="lockScreen" class="lock-screen">
         <div class="lock-card">
             <h2><i class="fas fa-lock"></i> Interner Bereich</h2>
@@ -786,10 +783,8 @@
         </div>
     </div>
 
-    <!-- Die eigentliche Website -->
     <div id="protected-content">
 
-        <!-- Top Navigation Bar -->
         <nav>
             <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
             <div class="nav-links">
@@ -808,7 +803,6 @@
             </div>
         </nav>
 
-        <!-- Hero Section -->
         <header class="hero">
             <div class="logo-wrapper">
                 <img src="1000194537.jpeg" alt="Loklöwen Logo" class="logo-img" onclick="openLightbox(this, 'Loklöwen-Logo')">
@@ -817,10 +811,8 @@
             <p class="subtitle">Willkommen in unserer Community. Hier findest du unsere Richtlinien für erfolgreiches und gemeinsames Lernen auf Augenhöhe.</p>
         </header>
 
-        <!-- Main Content Container -->
         <main class="main-container">
 
-            <!-- Musik-Player -->
             <div style="text-align: center; margin: 0 auto 40px auto; padding: 20px; background: rgba(20, 10, 5, 0.8); border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
                 <h4 style="color: #ffb700; margin-bottom: 10px; font-size: 1rem;"><i class="fas fa-music"></i> Loklöwen Soundtrack</h4>
                 <audio controls loop style="width: 100%;">
@@ -830,21 +822,19 @@
                 <p style="font-size: 0.8rem; color: #a3958c; margin-top: 8px;">Dauerschleife</p>
             </div>
 
-            <!-- INTERNE LERN- & CHAT-APP SEKTION MIT TRAINER -->
             <section id="lernapp" class="app-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-comments"></i> Lern- & Chat-Zentrale</h2>
                 </div>
-                <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Eure direkte Plattform für den Austausch und das exakte Wortlaut-Lernen.</p>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Eure direkte Plattform für den Austausch und das digitale Skript-Pauken.</p>
 
                 <div class="app-tabs">
                     <button class="app-tab-btn active" onclick="switchTab(event, 'tab-groupchat')"><i class="fas fa-users"></i> Klassen-Chat</button>
-                    <button class="app-tab-btn" onclick="switchTab(event, 'tab-trainer')"><i class="fas fa-brain"></i> Wortlaut-Trainer</button>
+                    <button class="app-tab-btn" onclick="switchTab(event, 'tab-trainer')"><i class="fas fa-brain"></i> Automatischer Flashcard-Trainer</button>
                     <button class="app-tab-btn" onclick="switchTab(event, 'tab-materials')"><i class="fas fa-folder-open"></i> Lernmaterialien</button>
                     <button class="app-tab-btn" onclick="switchTab(event, 'tab-video')"><i class="fas fa-video"></i> Videocall</button>
                 </div>
 
-                <!-- Tab 1: Klassen-Chat -->
                 <div id="tab-groupchat" class="app-tab-content active">
                     <div class="chat-box">
                         <div class="chat-messages" id="chatMessages">
@@ -861,24 +851,27 @@
                     </div>
                 </div>
 
-                <!-- Tab 2: NEUER WORTLAUT-TRAINER -->
                 <div id="tab-trainer" class="app-tab-content">
                     <div class="trainer-card">
-                        <h3 style="color: var(--bright-gold); margin-bottom: 10px;"><i class="fas fa-graduation-cap"></i> PDF & Regelwerk Wortlaut-Trainer</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem;">Antworte mit dem exakten Wortlaut wie im Regelwerk/Skript.</p>
+                        <h3 style="color: var(--bright-gold); margin-bottom: 10px;"><i class="fas fa-book-reader"></i> PDF-Skript Flashcard-Trainer</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Lade deine Ausbildungs-PDF hoch. Die App zerteilt den Text automatisch in lernbare Abschnitte!</p>
                         
-                        <div id="trainerQuestionBox" class="trainer-question">Lade Frage...</div>
-                        
-                        <input type="text" id="trainerAnswerInput" class="trainer-input" placeholder="Exakte Antwort eingeben..." onkeypress="handleTrainerPress(event)">
-                        <br>
-                        <button class="send-btn" onclick="checkTrainerAnswer()" style="padding: 10px 25px;">Antwort prüfen</button>
-                        
-                        <div id="trainerFeedback" class="trainer-feedback"></div>
-                        <div id="trainerStats" class="trainer-stats">Frage 1 von X</div>
+                        <div class="pdf-upload-box">
+                            <input type="file" id="pdfFileInput" accept="application/pdf" style="color: #fff;" onchange="loadPDFAndExtract(event)">
+                        </div>
+
+                        <div id="trainerArea" style="display: none;">
+                            <div class="flashcard">
+                                <div id="flashcardText" class="flashcard-text">Lade Text...</div>
+                            </div>
+                            
+                            <button class="send-btn" onclick="nextFlashcard()" style="padding: 12px 30px; font-size: 1rem;"><i class="fas fa-arrow-right"></i> Nächster Lernabschnitt</button>
+                            
+                            <div id="trainerStats" class="trainer-stats">Abschnitt 0 von 0</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Tab 3: Lernmaterialien -->
                 <div id="tab-materials" class="app-tab-content">
                     <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                         <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-cloud-upload-alt"></i> Skripte & Notizen tauschen</h3>
@@ -888,7 +881,6 @@
                     </div>
                 </div>
 
-                <!-- Tab 4: Videocall -->
                 <div id="tab-video" class="app-tab-content">
                     <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                         <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-video"></i> Loklöwen Lern-Videocall</h3>
@@ -966,7 +958,6 @@
                 </div>
             </div>
 
-            <!-- Unsere Trainingsmodule -->
             <section class="modules-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-book-open"></i> Unsere Trainingsmodule</h2>
@@ -979,7 +970,6 @@
                 <p style="font-size: 0.85rem; color: var(--bright-gold); margin-top: 10px;"><i class="fas fa-search-plus"></i> Klicke auf das Bild, um es in Großansicht zu öffnen</p>
             </section>
 
-            <!-- Praxis in Putlitz -->
             <section id="putlitz" class="putlitz-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
@@ -1005,7 +995,6 @@
                 </div>
             </section>
 
-            <!-- Welpen Galerie -->
             <section id="welpen" class="welpen-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-paw"></i> Bilder von Loklöwenwelpen</h2>
@@ -1032,14 +1021,12 @@
             </section>
         </main>
 
-        <!-- Lightbox Modal -->
         <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
             <span class="lightbox-close">&times;</span>
             <img id="lightbox-img" src="" alt="Großansicht">
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
 
-        <!-- Footer -->
         <footer>
             <div class="footer-links">
                 <a href="https://webmail.strato.de" target="_blank">Strato</a> | 
@@ -1051,7 +1038,6 @@
 
     </div>
 
-    <!-- JavaScript Logik -->
     <script>
         // PASSWORT SCHUTZ
         function checkPassword() {
@@ -1062,7 +1048,6 @@
             if (input === correctPassword) {
                 document.getElementById('lockScreen').style.display = 'none';
                 document.getElementById('protected-content').style.display = 'flex';
-                initTrainer(); // Trainer starten wenn eingeloggt
             } else {
                 errorMsg.style.display = 'block';
                 document.getElementById('passwordInput').value = '';
@@ -1119,64 +1104,71 @@
             if (event.key === 'Enter') sendChatMessage();
         }
 
-        // WORTLAUT-TRAINER LOGIK (HIER KANNST DU DEINE PDF-FRAGEN EINTRAGEN)
-        const pdfQuestions = [
-            {
-                question: "Wie lautet die Definition einer Rangierfahrt?",
-                answer: "Eine Rangierfahrt ist eine Fahrt zum Zwecke des Rangierens."
-            },
-            {
-                question: "Was muss der Triebfahrzeugführer vor dem Abfahren einer Zugfahrt prüfen?",
-                answer: "Die Vollständigkeit des Zuges und die Bremsuntersuchung."
-            },
-            {
-                question: "Wann gilt ein Signal als gestört oder erloschen?",
-                answer: "Wenn es ein Haltesignal zeigt oder zweideutig ist."
-            }
-            // HIER KANNST DU WEITERE FRAGEN AUS DEINEN PDFS HINZUFÜGEN IM FORMAT:
-            // { question: "Deine Frage...", answer: "Der exakte Wortlaut..." },
-        ];
+        // --- AUTOMATISCHER FLASHCARD PDF-PARSER ---
+        let flashcards = [];
+        let currentCardIndex = 0;
 
-        let currentQuestionIndex = 0;
+        async function loadPDFAndExtract(event) {
+            const file = event.target.files[0];
+            if (!file) return;
 
-        function initTrainer() {
-            loadTrainerQuestion();
+            const cardBox = document.getElementById('flashcardText');
+            cardBox.textContent = "Lese PDF aus und erstelle Lernkarten...";
+            document.getElementById('trainerArea').style.display = 'block';
+
+            const reader = new FileReader();
+            reader.readAsArrayBuffer(file);
+            reader.onload = async function() {
+                const typedarray = new Uint8Array(this.result);
+                try {
+                    const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                    let extractedCards = [];
+
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        const page = await pdf.getPage(i);
+                        const textContent = await page.getTextContent();
+                        const pageText = textContent.items.map(item => item.str).join(' ');
+                        
+                        // Text in logische Sätze/Abschnitte aufteilen
+                        const sentences = pageText.split(/(?<=[.?!])\s+/);
+                        for (let s of sentences) {
+                            let cleanS = s.trim();
+                            // Sinnvolle Abschnitte (mindestens 25 Zeichen) erfassen
+                            if (cleanS.length > 25 && !extractedCards.includes(cleanS)) {
+                                extractedCards.push(cleanS);
+                            }
+                        }
+                    }
+
+                    if (extractedCards.length === 0) {
+                        cardBox.textContent = "Kein Text in der PDF gefunden!";
+                        return;
+                    }
+
+                    flashcards = extractedCards;
+                    currentCardIndex = 0;
+                    showFlashcard();
+
+                } catch (error) {
+                    console.error(error);
+                    cardBox.textContent = "Fehler beim Lesen der PDF-Datei.";
+                }
+            };
         }
 
-        function loadTrainerQuestion() {
-            if (pdfQuestions.length === 0) return;
-            const qBox = document.getElementById('trainerQuestionBox');
+        function showFlashcard() {
+            if (flashcards.length === 0) return;
+            const cardBox = document.getElementById('flashcardText');
             const statsBox = document.getElementById('trainerStats');
-            const feedbackBox = document.getElementById('trainerFeedback');
             
-            qBox.textContent = pdfQuestions[currentQuestionIndex].question;
-            statsBox.textContent = `Frage ${currentQuestionIndex + 1} von ${pdfQuestions.length}`;
-            feedbackBox.textContent = '';
-            feedbackBox.style.color = '#fff';
-            document.getElementById('trainerAnswerInput').value = '';
+            cardBox.textContent = flashcards[currentCardIndex];
+            statsBox.textContent = `Lernabschnitt ${currentCardIndex + 1} von ${flashcards.length}`;
         }
 
-        function checkTrainerAnswer() {
-            const userInput = document.getElementById('trainerAnswerInput').value.trim();
-            const correctAnswer = pdfQuestions[currentQuestionIndex].answer;
-            const feedbackBox = document.getElementById('trainerFeedback');
-
-            // Exakter Wortlaut Abgleich (Case-insensitive für Komfort, aber exakter Text)
-            if (userInput.toLowerCase() === correctAnswer.toLowerCase()) {
-                feedbackBox.style.color = '#48bb78'; // Grün
-                feedbackBox.innerHTML = '<i class="fas fa-check-circle"></i> Richtig! Exakter Wortlaut getroffen.';
-                setTimeout(() => {
-                    currentQuestionIndex = (currentQuestionIndex + 1) % pdfQuestions.length;
-                    loadTrainerQuestion();
-                }, 2000);
-            } else {
-                feedbackBox.style.color = '#f56565'; // Rot
-                feedbackBox.innerHTML = `<i class="fas fa-times-circle"></i> Falsch! Korrekter Wortlaut wäre:<br><em>"${correctAnswer}"</em>`;
-            }
-        }
-
-        function handleTrainerPress(event) {
-            if (event.key === 'Enter') checkTrainerAnswer();
+        function nextFlashcard() {
+            if (flashcards.length === 0) return;
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            showFlashcard();
         }
 
         function escapeHtml(text) {
