@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triebfahrzeugführer 2026 Klasse 14</title>
+    <title>Triebfahrzeugführer 2026 Klasse 14 - Intern</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -39,6 +39,96 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        /* Passwort-Overlay (Anfangs unsichtbare Seite, bis Passwort stimmt) */
+        #protected-content {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 30%, rgba(255, 69, 0, 0.2), transparent 60%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .lock-card {
+            background: rgba(20, 10, 5, 0.95);
+            border: 2px solid rgba(255, 102, 0, 0.5);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 69, 0, 0.3);
+        }
+
+        .lock-card h2 {
+            color: var(--bright-gold);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .lock-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .lock-card input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 102, 0, 0.5);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .lock-card input:focus {
+            border-color: var(--bright-gold);
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+
+        .lock-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary-fire), var(--bright-gold));
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .lock-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .error-msg {
+            color: #ff4500;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: none;
         }
 
         /* Top Navigation Bar */
@@ -641,250 +731,289 @@
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
-    <nav>
-        <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
-        <div class="nav-links">
-            <a href="#lernapp" class="nav-btn chat-nav-btn">
-                <i class="fas fa-comments"></i> Loklöwenwelpen Chat
-            </a>
-            <a href="#putlitz" class="nav-btn putlitz-btn">
-                <i class="fas fa-train"></i> Praxis in Putlitz
-            </a>
-            <a href="#welpen" class="nav-btn welpen-btn">
-                <i class="fas fa-paw"></i> Loklöwenwelpen
-            </a>
-            <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn discord-btn">
-                <i class="fab fa-discord"></i> Discord Joinen
-            </a>
+    <!-- Passwordsperre / Login-Screen -->
+    <div id="lockScreen" class="lock-screen">
+        <div class="lock-card">
+            <h2><i class="fas fa-lock"></i> Interner Bereich</h2>
+            <p>Nur für die Loklöwenwelpen der Klasse 14. Bitte Klassen-Passwort eingeben:</p>
+            <input type="password" id="passwordInput" placeholder="Passwort..." onkeypress="handlePasswordPress(event)">
+            <button class="lock-btn" onclick="checkPassword()">Eintreten</button>
+            <div id="errorMsg" class="error-msg">Falsches Passwort!</div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="logo-wrapper">
-            <img src="1000194537.jpeg" alt="Loklöwen Logo" class="logo-img" onclick="openLightbox(this, 'Loklöwen-Logo')">
-        </div>
-        <h1>Triebfahrzeugführer Klasse 14</h1>
-        <p class="subtitle">Willkommen in unserer Community. Hier findest du unsere Richtlinien für erfolgreiches und gemeinsames Lernen auf Augenhöhe.</p>
-    </header>
-
-    <!-- Main Content Container -->
-    <main class="main-container">
-
-        <!-- Musik-Player ganz oben über den Geboten -->
-        <div style="text-align: center; margin: 0 auto 40px auto; padding: 20px; background: rgba(20, 10, 5, 0.8); border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
-            <h4 style="color: #ffb700; margin-bottom: 10px; font-size: 1rem;"><i class="fas fa-music"></i> Loklöwen Soundtrack</h4>
-            <audio controls autoplay loop style="width: 100%;">
-                <source src="hintergrundmusik.mp3" type="audio/mpeg">
-                Dein Browser unterstützt kein Audio-element.
-            </audio>
-            <p style="font-size: 0.8rem; color: #a3958c; margin-top: 8px;">Läuft automatisch & in Dauerschleife</p>
-        </div>
-
-        <!-- LOKLÖWENWELPEN CHAT SEKTION -->
-        <section id="lernapp" class="app-section">
-            <div class="section-header" style="margin-top: 0;">
-                <h2 class="section-title"><i class="fas fa-comments"></i> Loklöwenwelpen Chat</h2>
-            </div>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Willkommen im Loklöwenwelpen Chat der Klasse 14! Wenn Ihr Welpen seid, dann schnackt einfach, wenn Ihr Interessenten seid, dann fragt uns!</p>
-
-            <div class="app-tabs">
-                <button class="app-tab-btn active" onclick="switchTab(event, 'tab-groupchat')"><i class="fas fa-users"></i> Klassen-Chat</button>
-                <button class="app-tab-btn" onclick="switchTab(event, 'tab-materials')"><i class="fas fa-folder-open"></i> Lernmaterialien</button>
-                <button class="app-tab-btn" onclick="switchTab(event, 'tab-video')"><i class="fas fa-video"></i> Videocall</button>
-            </div>
-
-            <!-- Tab 1: Klassen-Chat -->
-            <div id="tab-groupchat" class="app-tab-content active">
-                <div class="chat-box">
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="chat-message">
-                            <div class="sender">System / Loklöwen-Bot</div>
-                            <div class="text">Willkommen im Loklöwenwelpen Chat! Schnackt euch frei oder fragt uns bei Interesse.</div>
-                        </div>
-                    </div>
-                    <div class="chat-input-area">
-                        <input type="text" id="chatNameInput" placeholder="Dein Name..." style="max-width: 150px;">
-                        <input type="text" id="chatTextInput" placeholder="Nachricht eingeben..." onkeypress="handleChatPress(event)">
-                        <button class="send-btn" onclick="sendChatMessage()">Senden</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab 2: Lernmaterialien -->
-            <div id="tab-materials" class="app-tab-content">
-                <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
-                    <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-cloud-upload-alt"></i> Skripte & Notizen tauschen</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">Hier könnt ihr Zusammenfassungen und Lernfragen für die Prüfung ablegen.</p>
-                    <input type="file" id="fileUpload" style="color: #fff; margin-bottom: 15px;"><br>
-                    <button class="send-btn" onclick="alert('Datei-Upload vorbereitet!')">Datei hochladen</button>
-                </div>
-            </div>
-
-            <!-- Tab 3: Videocall -->
-            <div id="tab-video" class="app-tab-content">
-                <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
-                    <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-video"></i> Loklöwen Lern-Videocall</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 25px;">Trefft euch virtuell zum gemeinsamen Pauken und Vorbereiten auf die Praxisphasen.</p>
-                    <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn putlitz-btn" style="display: inline-flex; text-decoration: none;">
-                        <i class="fab fa-discord"></i> Zum Klassen-Call auf Discord
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-header">
-            <h2 class="section-title">Unsere 10 Gebote</h2>
-        </div>
-
-        <div class="rules-grid">
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #01</div>
-                <h3>Respektvoll miteinander umgehen</h3>
-                <p>Wir begegnen uns wertschätzend und auf Augenhöhe, hören einander zu und lassen jeden ausreden.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #02</div>
-                <h3>Zusammenhalt & Teamwork</h3>
-                <p>Wir arbeiten als Team, ziehen an einem Strang, lassen unser Ego draußen und niemanden zurück – Sicherheit und Teamarbeit stehen über Rechthaben.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #03</div>
-                <h3>Akzeptanz & Offenheit</h3>
-                <p>Wir akzeptieren unterschiedliche Meinungen, Stärken und Schwächen.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #04</div>
-                <h3>Lernkultur & Fehlerkultur</h3>
-                <p>Wir hinterfragen unser eigenes Verhalten, sprechen Probleme, Meinungsverschiedenheiten und Fehler ehrlich an und lernen gemeinsam daraus – auch damit sie später nicht im Betrieb passieren.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #05</div>
-                <h3>Verständnis & Tiefe</h3>
-                <p>Wir wollen Zusammenhänge wirklich verstehen, nicht nur Inhalte auswendig lernen.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #06</div>
-                <h3>Demokratie</h3>
-                <p>Wichtige Entscheidungen treffen wir gemeinsam und fair.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #07</div>
-                <h3>Ansporn & Motivation</h3>
-                <p>Herausforderungen motivieren uns, Lösungen zu finden.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #08</div>
-                <h3>Zielorientiertes Arbeiten</h3>
-                <p>Wir arbeiten konzentriert, verfolgen unsere gemeinsamen Ziele und verlieren dabei unsere eigenen nicht aus den Augen.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #09</div>
-                <h3>Verantwortung</h3>
-                <p>Jeder übernimmt Verantwortung für die Gruppe, seine Aufgaben und seinen Beitrag – wir lernen nicht nur für Prüfungen, sondern für Situationen, in denen andere auf unsere Entscheidungen vertrauen.</p>
-            </div>
-
-            <div class="rule-card">
-                <div class="rule-badge">Gebot #10</div>
-                <h3>Zuverlässigkeit & Etikette</h3>
-                <p>Wir sind pünktlich, halten unser Wort, fangen uns gegenseitig auf und achten auch auf die mentale Gesundheit füreinander – unsere Etikette gibt unserem Auftreten Richtung und Würde.</p>
-            </div>
-        </div>
-
-        <!-- Unsere Trainingsmodule Sektion direkt unter den Geboten -->
-        <section class="modules-section">
-            <div class="section-header" style="margin-top: 0;">
-                <h2 class="section-title"><i class="fas fa-book-open"></i> Unsere Trainingsmodule</h2>
-            </div>
-            <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">Übersicht über alle Module und Fächer unserer Ausbildung zum Triebfahrzeugführer Klasse 14.</p>
-            
-            <div class="modules-image-container" onclick="openLightbox(this.querySelector('img'), 'Modul-Übersicht TF14')">
-                <img src="file_000000009298820a86c9af6fa1b84dfc.png" alt="Modul-Übersicht TF14">
-            </div>
-            <p style="font-size: 0.85rem; color: var(--bright-gold); margin-top: 10px;"><i class="fas fa-search-plus"></i> Klicke auf das Bild, um es in Großansicht zu öffnen</p>
-        </section>
-
-        <!-- Praxis in Putlitz Section -->
-        <section id="putlitz" class="putlitz-section">
-            <div class="section-header" style="margin-top: 0;">
-                <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
-            </div>
-            
-            <p style="text-align: center; color: var(--text-muted);">Alle wichtigen Informationen, Ablaufpläne und Unterlagen zu unseren Praxis-Tagen am Standort Putlitz.</p>
-
-            <div class="putlitz-content">
-                <div class="info-box">
-                    <h4><i class="fas fa-calendar-alt"></i> Termine & Ablauf</h4>
-                    <p>Hier findest du demnächst die aktuellen Praxistermine, Uhrzeiten und den Schichtplan für die Praxisausbildung.</p>
-                </div>
-
-                <div class="info-box">
-                    <h4><i class="fas fa-map-marker-alt"></i> Anfahrt & Treffpunkt</h4>
-                    <p>Treffpunkt ist am Bahnhof Putlitz. Bitte bringt eure Sicherheitskleidung (PSA) vollständig mit.</p>
-                </div>
-
-                <div class="info-box">
-                    <h4><i class="fas fa-clipboard-list"></i> Vorbereitung</h4>
-                    <p>Überprüft vor Antritt der Praxisphase die relevanten Regelwerke und Checklisten im Discord-Kanal.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Bilder von Loklöwenwelpen -->
-        <section id="welpen" class="welpen-section">
-            <div class="section-header" style="margin-top: 0;">
-                <h2 class="section-title"><i class="fas fa-paw"></i> Bilder von Loklöwenwelpen</h2>
-            </div>
-            
-            <p style="text-align: center; color: var(--text-muted);">Unsere Nachwuchs-Löwen im Training für die Schiene!</p>
-
-            <div class="welpen-gallery">
-                <div class="gallery-card">
-                    <img src="lok.jpg" alt="Loklöwenwelpe 1" onclick="openLightbox(this, 'by Dominik')">
-                    <div class="gallery-caption">by Dominik</div>
-                </div>
-
-                <div class="gallery-card">
-                    <img src="lok2.jpg" alt="Lok2" onclick="openLightbox(this, 'by Mattis')">
-                    <div class="gallery-caption">by Mattis</div>
-                </div>
-
-                <div class="gallery-card">
-                    <img src="welpe3.jpg" alt="Loklöwenwelpe 3" onclick="openLightbox(this, 'Bereit für die Praxis')">
-                    <div class="gallery-caption">Bereit für die Praxis</div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img id="lightbox-img" src="" alt="Großansicht">
-        <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 
-    <!-- Footer mit den 3 Links -->
-    <footer>
-        <div class="footer-links">
-            <a href="https://webmail.strato.de" target="_blank">Strato</a> | 
-            <a href="akademie.lokloewen.de" target="_blank">Publisher</a> | 
-            <a href="https://lernwelt-lokloewen.de/login" target="_blank">Lernwelten</a>
-        </div>
-        <p>&copy; Triebfahrzeugführer 2026 Klasse 14. Alle Rechte vorbehalten.</p>
-    </footer>
+    <!-- Die eigentliche Website (erst nach Passwort sichtbar) -->
+    <div id="protected-content">
 
-    <!-- JavaScript für Großansicht, Tabs und Chat -->
+        <!-- Top Navigation Bar -->
+        <nav>
+            <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
+            <div class="nav-links">
+                <a href="#lernapp" class="nav-btn chat-nav-btn">
+                    <i class="fas fa-comments"></i> Loklöwenwelpen Chat
+                </a>
+                <a href="#putlitz" class="nav-btn putlitz-btn">
+                    <i class="fas fa-train"></i> Praxis in Putlitz
+                </a>
+                <a href="#welpen" class="nav-btn welpen-btn">
+                    <i class="fas fa-paw"></i> Loklöwenwelpen
+                </a>
+                <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn discord-btn">
+                    <i class="fab fa-discord"></i> Discord Joinen
+                </a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="logo-wrapper">
+                <img src="1000194537.jpeg" alt="Loklöwen Logo" class="logo-img" onclick="openLightbox(this, 'Loklöwen-Logo')">
+            </div>
+            <h1>Triebfahrzeugführer Klasse 14</h1>
+            <p class="subtitle">Willkommen in unserer Community. Hier findest du unsere Richtlinien für erfolgreiches und gemeinsames Lernen auf Augenhöhe.</p>
+        </header>
+
+        <!-- Main Content Container -->
+        <main class="main-container">
+
+            <!-- Musik-Player ganz oben über den Geboten -->
+            <div style="text-align: center; margin: 0 auto 40px auto; padding: 20px; background: rgba(20, 10, 5, 0.8); border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+                <h4 style="color: #ffb700; margin-bottom: 10px; font-size: 1rem;"><i class="fas fa-music"></i> Loklöwen Soundtrack</h4>
+                <audio controls loop style="width: 100%;">
+                    <source src="hintergrundmusik.mp3" type="audio/mpeg">
+                    Dein Browser unterstützt kein Audio-element.
+                </audio>
+                <p style="font-size: 0.8rem; color: #a3958c; margin-top: 8px;">Dauerschleife</p>
+            </div>
+
+            <!-- LOKLÖWENWELPEN CHAT SEKTION -->
+            <section id="lernapp" class="app-section">
+                <div class="section-header" style="margin-top: 0;">
+                    <h2 class="section-title"><i class="fas fa-comments"></i> Loklöwenwelpen Chat</h2>
+                </div>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Willkommen im Loklöwenwelpen Chat der Klasse 14! Wenn Ihr Welpen seid, dann schnackt einfach, wenn Ihr Interessenten seid, dann fragt uns!</p>
+
+                <div class="app-tabs">
+                    <button class="app-tab-btn active" onclick="switchTab(event, 'tab-groupchat')"><i class="fas fa-users"></i> Klassen-Chat</button>
+                    <button class="app-tab-btn" onclick="switchTab(event, 'tab-materials')"><i class="fas fa-folder-open"></i> Lernmaterialien</button>
+                    <button class="app-tab-btn" onclick="switchTab(event, 'tab-video')"><i class="fas fa-video"></i> Videocall</button>
+                </div>
+
+                <!-- Tab 1: Klassen-Chat -->
+                <div id="tab-groupchat" class="app-tab-content active">
+                    <div class="chat-box">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="chat-message">
+                                <div class="sender">System / Loklöwen-Bot</div>
+                                <div class="text">Willkommen im Loklöwenwelpen Chat! Schnackt euch frei oder fragt uns bei Interesse.</div>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="chatNameInput" placeholder="Dein Name..." style="max-width: 150px;">
+                            <input type="text" id="chatTextInput" placeholder="Nachricht eingeben..." onkeypress="handleChatPress(event)">
+                            <button class="send-btn" onclick="sendChatMessage()">Senden</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Lernmaterialien -->
+                <div id="tab-materials" class="app-tab-content">
+                    <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                        <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-cloud-upload-alt"></i> Skripte & Notizen tauschen</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">Hier könnt ihr Zusammenfassungen und Lernfragen für die Prüfung ablegen.</p>
+                        <input type="file" id="fileUpload" style="color: #fff; margin-bottom: 15px;"><br>
+                        <button class="send-btn" onclick="alert('Datei-Upload vorbereitet!')">Datei hochladen</button>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Videocall -->
+                <div id="tab-video" class="app-tab-content">
+                    <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                        <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-video"></i> Loklöwen Lern-Videocall</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 25px;">Trefft euch virtuell zum gemeinsamen Pauken und Vorbereiten auf die Praxisphasen.</p>
+                        <a href="https://discord.gg/dyAkyMd6v" target="_blank" class="nav-btn putlitz-btn" style="display: inline-flex; text-decoration: none;">
+                            <i class="fab fa-discord"></i> Zum Klassen-Call auf Discord
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-header">
+                <h2 class="section-title">Unsere 10 Gebote</h2>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #01</div>
+                    <h3>Respektvoll miteinander umgehen</h3>
+                    <p>Wir begegnen uns wertschätzend und auf Augenhöhe, hören einander zu und lassen jeden ausreden.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #02</div>
+                    <h3>Zusammenhalt & Teamwork</h3>
+                    <p>Wir arbeiten als Team, ziehen an einem Strang, lassen unser Ego draußen und niemanden zurück – Sicherheit und Teamarbeit stehen über Rechthaben.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #03</div>
+                    <h3>Akzeptanz & Offenheit</h3>
+                    <p>Wir akzeptieren unterschiedliche Meinungen, Stärken und Schwächen.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #04</div>
+                    <h3>Lernkultur & Fehlerkultur</h3>
+                    <p>Wir hinterfragen unser eigenes Verhalten, sprechen Probleme, Meinungsverschiedenheiten und Fehler ehrlich an und lernen gemeinsam daraus – auch damit sie später nicht im Betrieb passieren.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #05</div>
+                    <h3>Verständnis & Tiefe</h3>
+                    <p>Wir wollen Zusammenhänge wirklich verstehen, nicht nur Inhalte auswendig lernen.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #06</div>
+                    <h3>Demokratie</h3>
+                    <p>Wichtige Entscheidungen treffen wir gemeinsam und fair.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #07</div>
+                    <h3>Ansporn & Motivation</h3>
+                    <p>Herausforderungen motivieren uns, Lösungen zu finden.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #08</div>
+                    <h3>Zielorientiertes Arbeiten</h3>
+                    <p>Wir arbeiten konzentriert, verfolgen unsere gemeinsamen Ziele und verlieren dabei unsere eigenen nicht aus den Augen.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #09</div>
+                    <h3>Verantwortung</h3>
+                    <p>Jeder übernimmt Verantwortung für die Gruppe, seine Aufgaben und seinen Beitrag – wir lernen nicht nur für Prüfungen, sondern für Situationen, in denen andere auf unsere Entscheidungen vertrauen.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-badge">Gebot #10</div>
+                    <h3>Zuverlässigkeit & Etikette</h3>
+                    <p>Wir sind pünktlich, halten unser Wort, fangen uns gegenseitig auf und achten auch auf die mentale Gesundheit füreinander – unsere Etikette gibt unserem Auftreten Richtung und Würde.</p>
+                </div>
+            </div>
+
+            <!-- Unsere Trainingsmodule Sektion direkt unter den Geboten -->
+            <section class="modules-section">
+                <div class="section-header" style="margin-top: 0;">
+                    <h2 class="section-title"><i class="fas fa-book-open"></i> Unsere Trainingsmodule</h2>
+                </div>
+                <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto;">Übersicht über alle Module und Fächer unserer Ausbildung zum Triebfahrzeugführer Klasse 14.</p>
+                
+                <div class="modules-image-container" onclick="openLightbox(this.querySelector('img'), 'Modul-Übersicht TF14')">
+                    <img src="file_000000009298820a86c9af6fa1b84dfc.png" alt="Modul-Übersicht TF14">
+                </div>
+                <p style="font-size: 0.85rem; color: var(--bright-gold); margin-top: 10px;"><i class="fas fa-search-plus"></i> Klicke auf das Bild, um es in Großansicht zu öffnen</p>
+            </section>
+
+            <!-- Praxis in Putlitz Section -->
+            <section id="putlitz" class="putlitz-section">
+                <div class="section-header" style="margin-top: 0;">
+                    <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
+                </div>
+                
+                <p style="text-align: center; color: var(--text-muted);">Alle wichtigen Informationen, Ablaufpläne und Unterlagen zu unseren Praxis-Tagen am Standort Putlitz.</p>
+
+                <div class="putlitz-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-calendar-alt"></i> Termine & Ablauf</h4>
+                        <p>Hier findest du demnächst die aktuellen Praxistermine, Uhrzeiten und den Schichtplan für die Praxisausbildung.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4><i class="fas fa-map-marker-alt"></i> Anfahrt & Treffpunkt</h4>
+                        <p>Treffpunkt ist am Bahnhof Putlitz. Bitte bringt eure Sicherheitskleidung (PSA) vollständig mit.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4><i class="fas fa-clipboard-list"></i> Vorbereitung</h4>
+                        <p>Überprüft vor Antritt der Praxisphase die relevanten Regelwerke und Checklisten im Discord-Kanal.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Bilder von Loklöwenwelpen -->
+            <section id="welpen" class="welpen-section">
+                <div class="section-header" style="margin-top: 0;">
+                    <h2 class="section-title"><i class="fas fa-paw"></i> Bilder von Loklöwenwelpen</h2>
+                </div>
+                
+                <p style="text-align: center; color: var(--text-muted);">Unsere Nachwuchs-Löwen im Training für die Schiene!</p>
+
+                <div class="welpen-gallery">
+                    <div class="gallery-card">
+                        <img src="lok.jpg" alt="Loklöwenwelpe 1" onclick="openLightbox(this, 'by Dominik')">
+                        <div class="gallery-caption">by Dominik</div>
+                    </div>
+
+                    <div class="gallery-card">
+                        <img src="lok2.jpg" alt="Lok2" onclick="openLightbox(this, 'by Mattis')">
+                        <div class="gallery-caption">by Mattis</div>
+                    </div>
+
+                    <div class="gallery-card">
+                        <img src="welpe3.jpg" alt="Loklöwenwelpe 3" onclick="openLightbox(this, 'Bereit für die Praxis')">
+                        <div class="gallery-caption">Bereit für die Praxis</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-img" src="" alt="Großansicht">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+
+        <!-- Footer mit den korrigierten Links -->
+        <footer>
+            <div class="footer-links">
+                <a href="https://webmail.strato.de" target="_blank">Strato</a> | 
+                <a href="https://akademie.lokloewen.de" target="_blank">Publisher</a> | 
+                <a href="https://lernwelt-lokloewen.de/login" target="_blank">Lernwelten</a>
+            </div>
+            <p>&copy; Triebfahrzeugführer 2026 Klasse 14. Alle Rechte vorbehalten.</p>
+        </footer>
+
+    </div> <!-- Ende von protected-content -->
+
+    <!-- JavaScript für Passwort, Großansicht, Tabs und Chat -->
     <script>
+        // PASSWORT-SCHUTZ LOGIK
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('errorMsg');
+            
+            // HIER IST DAS AKTUELLE PASSWORT:
+            const correctPassword = "Lokzwillinge2026";
+
+            if (input === correctPassword) {
+                document.getElementById('lockScreen').style.display = 'none';
+                document.getElementById('protected-content').style.display = 'flex';
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+
+        function handlePasswordPress(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        }
+
         function openLightbox(imgElement, captionText) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
