@@ -41,7 +41,7 @@
             align-items: center;
         }
 
-        /* Passwort-Overlay (Anfangs unsichtbare Seite, bis Passwort stimmt) */
+        /* Passwort-Overlay */
         #protected-content {
             display: none;
             width: 100%;
@@ -181,7 +181,6 @@
             cursor: pointer;
         }
 
-        /* Putlitz Button */
         .putlitz-btn {
             background: linear-gradient(135deg, #ff6600, #ffaa00);
             color: #000;
@@ -195,7 +194,6 @@
             background: linear-gradient(135deg, #ffaa00, #ffffff);
         }
 
-        /* Button für Loklöwenwelpen */
         .welpen-btn {
             background: rgba(255, 102, 0, 0.15);
             color: #fff;
@@ -208,7 +206,6 @@
             box-shadow: 0 0 20px var(--glow-color);
         }
 
-        /* App / Chat Button */
         .chat-nav-btn {
             background: linear-gradient(135deg, var(--primary-fire), var(--bright-gold));
             color: #000;
@@ -221,7 +218,6 @@
             box-shadow: 0 0 25px rgba(255, 183, 0, 0.8);
         }
 
-        /* Discord Button */
         .discord-btn {
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
@@ -302,7 +298,7 @@
             margin-bottom: 30px;
         }
 
-        /* Layout & Sections */
+        /* Main Layout */
         .main-container {
             max-width: 1100px;
             width: 100%;
@@ -334,7 +330,7 @@
             margin: 10px auto 0;
         }
 
-        /* Internal App / Chat Section */
+        /* App / Hub Section */
         .app-section {
             background: rgba(20, 10, 5, 0.95);
             border: 2px solid rgba(255, 102, 0, 0.5);
@@ -456,6 +452,54 @@
             background: var(--bright-gold);
         }
 
+        /* Lern-Trainer UI Styles */
+        .trainer-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .trainer-question {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .trainer-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 102, 0, 0.5);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .trainer-input:focus {
+            border-color: var(--bright-gold);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .trainer-feedback {
+            margin-top: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            min-height: 30px;
+        }
+
+        .trainer-stats {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
         /* Rules Grid */
         .rules-grid {
             display: grid;
@@ -518,7 +562,7 @@
             line-height: 1.5;
         }
 
-        /* Section: Unsere Trainingsmodule */
+        /* Trainingsmodule Section */
         .modules-section {
             background: rgba(20, 10, 5, 0.8);
             border: 1px solid rgba(255, 102, 0, 0.3);
@@ -552,7 +596,7 @@
             display: block;
         }
 
-        /* Section: Praxis in Putlitz */
+        /* Praxis in Putlitz Section */
         .putlitz-section {
             background: rgba(20, 10, 5, 0.8);
             border: 1px solid rgba(255, 102, 0, 0.3);
@@ -586,7 +630,7 @@
             gap: 10px;
         }
 
-        /* Section: Bilder von Loklöwenwelpen */
+        /* Welpen Galerie Section */
         .welpen-section {
             background: rgba(20, 10, 5, 0.8);
             border: 1px solid rgba(255, 102, 0, 0.3);
@@ -639,7 +683,7 @@
             font-size: 0.95rem;
         }
 
-        /* Lightbox Modal für Großansicht */
+        /* Lightbox Modal */
         .lightbox-modal {
             display: none;
             position: fixed;
@@ -689,7 +733,7 @@
             color: var(--primary-fire);
         }
 
-        /* Footer & Footer Links im kleinen blauen Stil */
+        /* Footer */
         footer {
             width: 100%;
             text-align: center;
@@ -731,7 +775,7 @@
 </head>
 <body>
 
-    <!-- Passwordsperre / Login-Screen -->
+    <!-- Passwordsperre -->
     <div id="lockScreen" class="lock-screen">
         <div class="lock-card">
             <h2><i class="fas fa-lock"></i> Interner Bereich</h2>
@@ -742,7 +786,7 @@
         </div>
     </div>
 
-    <!-- Die eigentliche Website (erst nach Passwort sichtbar) -->
+    <!-- Die eigentliche Website -->
     <div id="protected-content">
 
         <!-- Top Navigation Bar -->
@@ -750,7 +794,7 @@
             <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
             <div class="nav-links">
                 <a href="#lernapp" class="nav-btn chat-nav-btn">
-                    <i class="fas fa-comments"></i> Loklöwenwelpen Chat
+                    <i class="fas fa-comments"></i> Lern- & Chat-Zentrale
                 </a>
                 <a href="#putlitz" class="nav-btn putlitz-btn">
                     <i class="fas fa-train"></i> Praxis in Putlitz
@@ -776,7 +820,7 @@
         <!-- Main Content Container -->
         <main class="main-container">
 
-            <!-- Musik-Player ganz oben über den Geboten -->
+            <!-- Musik-Player -->
             <div style="text-align: center; margin: 0 auto 40px auto; padding: 20px; background: rgba(20, 10, 5, 0.8); border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
                 <h4 style="color: #ffb700; margin-bottom: 10px; font-size: 1rem;"><i class="fas fa-music"></i> Loklöwen Soundtrack</h4>
                 <audio controls loop style="width: 100%;">
@@ -786,15 +830,16 @@
                 <p style="font-size: 0.8rem; color: #a3958c; margin-top: 8px;">Dauerschleife</p>
             </div>
 
-            <!-- LOKLÖWENWELPEN CHAT SEKTION -->
+            <!-- INTERNE LERN- & CHAT-APP SEKTION MIT TRAINER -->
             <section id="lernapp" class="app-section">
                 <div class="section-header" style="margin-top: 0;">
-                    <h2 class="section-title"><i class="fas fa-comments"></i> Loklöwenwelpen Chat</h2>
+                    <h2 class="section-title"><i class="fas fa-comments"></i> Lern- & Chat-Zentrale</h2>
                 </div>
-                <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Willkommen im Loklöwenwelpen Chat der Klasse 14! Wenn Ihr Welpen seid, dann schnackt einfach, wenn Ihr Interessenten seid, dann fragt uns!</p>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Eure direkte Plattform für den Austausch und das exakte Wortlaut-Lernen.</p>
 
                 <div class="app-tabs">
                     <button class="app-tab-btn active" onclick="switchTab(event, 'tab-groupchat')"><i class="fas fa-users"></i> Klassen-Chat</button>
+                    <button class="app-tab-btn" onclick="switchTab(event, 'tab-trainer')"><i class="fas fa-brain"></i> Wortlaut-Trainer</button>
                     <button class="app-tab-btn" onclick="switchTab(event, 'tab-materials')"><i class="fas fa-folder-open"></i> Lernmaterialien</button>
                     <button class="app-tab-btn" onclick="switchTab(event, 'tab-video')"><i class="fas fa-video"></i> Videocall</button>
                 </div>
@@ -816,7 +861,24 @@
                     </div>
                 </div>
 
-                <!-- Tab 2: Lernmaterialien -->
+                <!-- Tab 2: NEUER WORTLAUT-TRAINER -->
+                <div id="tab-trainer" class="app-tab-content">
+                    <div class="trainer-card">
+                        <h3 style="color: var(--bright-gold); margin-bottom: 10px;"><i class="fas fa-graduation-cap"></i> PDF & Regelwerk Wortlaut-Trainer</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem;">Antworte mit dem exakten Wortlaut wie im Regelwerk/Skript.</p>
+                        
+                        <div id="trainerQuestionBox" class="trainer-question">Lade Frage...</div>
+                        
+                        <input type="text" id="trainerAnswerInput" class="trainer-input" placeholder="Exakte Antwort eingeben..." onkeypress="handleTrainerPress(event)">
+                        <br>
+                        <button class="send-btn" onclick="checkTrainerAnswer()" style="padding: 10px 25px;">Antwort prüfen</button>
+                        
+                        <div id="trainerFeedback" class="trainer-feedback"></div>
+                        <div id="trainerStats" class="trainer-stats">Frage 1 von X</div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Lernmaterialien -->
                 <div id="tab-materials" class="app-tab-content">
                     <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                         <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-cloud-upload-alt"></i> Skripte & Notizen tauschen</h3>
@@ -826,7 +888,7 @@
                     </div>
                 </div>
 
-                <!-- Tab 3: Videocall -->
+                <!-- Tab 4: Videocall -->
                 <div id="tab-video" class="app-tab-content">
                     <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                         <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-video"></i> Loklöwen Lern-Videocall</h3>
@@ -904,7 +966,7 @@
                 </div>
             </div>
 
-            <!-- Unsere Trainingsmodule Sektion direkt unter den Geboten -->
+            <!-- Unsere Trainingsmodule -->
             <section class="modules-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-book-open"></i> Unsere Trainingsmodule</h2>
@@ -917,7 +979,7 @@
                 <p style="font-size: 0.85rem; color: var(--bright-gold); margin-top: 10px;"><i class="fas fa-search-plus"></i> Klicke auf das Bild, um es in Großansicht zu öffnen</p>
             </section>
 
-            <!-- Praxis in Putlitz Section -->
+            <!-- Praxis in Putlitz -->
             <section id="putlitz" class="putlitz-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
@@ -943,7 +1005,7 @@
                 </div>
             </section>
 
-            <!-- Section: Bilder von Loklöwenwelpen -->
+            <!-- Welpen Galerie -->
             <section id="welpen" class="welpen-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-paw"></i> Bilder von Loklöwenwelpen</h2>
@@ -977,7 +1039,7 @@
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
 
-        <!-- Footer mit den korrigierten Links -->
+        <!-- Footer -->
         <footer>
             <div class="footer-links">
                 <a href="https://webmail.strato.de" target="_blank">Strato</a> | 
@@ -987,21 +1049,20 @@
             <p>&copy; Triebfahrzeugführer 2026 Klasse 14. Alle Rechte vorbehalten.</p>
         </footer>
 
-    </div> <!-- Ende von protected-content -->
+    </div>
 
-    <!-- JavaScript für Passwort, Großansicht, Tabs und Chat -->
+    <!-- JavaScript Logik -->
     <script>
-        // PASSWORT-SCHUTZ LOGIK
+        // PASSWORT SCHUTZ
         function checkPassword() {
             const input = document.getElementById('passwordInput').value;
             const errorMsg = document.getElementById('errorMsg');
-            
-            // HIER IST DAS AKTUELLE PASSWORT:
             const correctPassword = "Lokzwillinge2026";
 
             if (input === correctPassword) {
                 document.getElementById('lockScreen').style.display = 'none';
                 document.getElementById('protected-content').style.display = 'flex';
+                initTrainer(); // Trainer starten wenn eingeloggt
             } else {
                 errorMsg.style.display = 'block';
                 document.getElementById('passwordInput').value = '';
@@ -1009,30 +1070,27 @@
         }
 
         function handlePasswordPress(event) {
-            if (event.key === 'Enter') {
-                checkPassword();
-            }
+            if (event.key === 'Enter') checkPassword();
         }
 
+        // LIGHTBOX
         function openLightbox(imgElement, captionText) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
-
             lightboxImg.src = imgElement.src;
             lightboxCaption.textContent = captionText;
             lightbox.classList.add('active');
         }
 
         function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
+            document.getElementById('lightbox').classList.remove('active');
         }
 
+        // TABS SWITCHEN
         function switchTab(event, tabId) {
             const contents = document.querySelectorAll('.app-tab-content');
             contents.forEach(c => c.classList.remove('active'));
-
             const buttons = document.querySelectorAll('.app-tab-btn');
             buttons.forEach(b => b.classList.remove('active'));
 
@@ -1040,41 +1098,89 @@
             event.currentTarget.classList.add('active');
         }
 
+        // CHAT LOGIK
         function sendChatMessage() {
             const nameInput = document.getElementById('chatNameInput');
             const textInput = document.getElementById('chatTextInput');
             const messagesContainer = document.getElementById('chatMessages');
 
             if (textInput.value.trim() === '') return;
-
             const senderName = nameInput.value.trim() !== '' ? nameInput.value.trim() : 'Loklöwe';
 
             const messageDiv = document.createElement('div');
             messageDiv.className = 'chat-message';
-            messageDiv.innerHTML = `
-                <div class="sender">${escapeHtml(senderName)}</div>
-                <div class="text">${escapeHtml(textInput.value)}</div>
-            `;
-
+            messageDiv.innerHTML = `<div class="sender">${escapeHtml(senderName)}</div><div class="text">${escapeHtml(textInput.value)}</div>`;
             messagesContainer.appendChild(messageDiv);
             textInput.value = '';
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
         function handleChatPress(event) {
-            if (event.key === 'Enter') {
-                sendChatMessage();
+            if (event.key === 'Enter') sendChatMessage();
+        }
+
+        // WORTLAUT-TRAINER LOGIK (HIER KANNST DU DEINE PDF-FRAGEN EINTRAGEN)
+        const pdfQuestions = [
+            {
+                question: "Wie lautet die Definition einer Rangierfahrt?",
+                answer: "Eine Rangierfahrt ist eine Fahrt zum Zwecke des Rangierens."
+            },
+            {
+                question: "Was muss der Triebfahrzeugführer vor dem Abfahren einer Zugfahrt prüfen?",
+                answer: "Die Vollständigkeit des Zuges und die Bremsuntersuchung."
+            },
+            {
+                question: "Wann gilt ein Signal als gestört oder erloschen?",
+                answer: "Wenn es ein Haltesignal zeigt oder zweideutig ist."
+            }
+            // HIER KANNST DU WEITERE FRAGEN AUS DEINEN PDFS HINZUFÜGEN IM FORMAT:
+            // { question: "Deine Frage...", answer: "Der exakte Wortlaut..." },
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function initTrainer() {
+            loadTrainerQuestion();
+        }
+
+        function loadTrainerQuestion() {
+            if (pdfQuestions.length === 0) return;
+            const qBox = document.getElementById('trainerQuestionBox');
+            const statsBox = document.getElementById('trainerStats');
+            const feedbackBox = document.getElementById('trainerFeedback');
+            
+            qBox.textContent = pdfQuestions[currentQuestionIndex].question;
+            statsBox.textContent = `Frage ${currentQuestionIndex + 1} von ${pdfQuestions.length}`;
+            feedbackBox.textContent = '';
+            feedbackBox.style.color = '#fff';
+            document.getElementById('trainerAnswerInput').value = '';
+        }
+
+        function checkTrainerAnswer() {
+            const userInput = document.getElementById('trainerAnswerInput').value.trim();
+            const correctAnswer = pdfQuestions[currentQuestionIndex].answer;
+            const feedbackBox = document.getElementById('trainerFeedback');
+
+            // Exakter Wortlaut Abgleich (Case-insensitive für Komfort, aber exakter Text)
+            if (userInput.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedbackBox.style.color = '#48bb78'; // Grün
+                feedbackBox.innerHTML = '<i class="fas fa-check-circle"></i> Richtig! Exakter Wortlaut getroffen.';
+                setTimeout(() => {
+                    currentQuestionIndex = (currentQuestionIndex + 1) % pdfQuestions.length;
+                    loadTrainerQuestion();
+                }, 2000);
+            } else {
+                feedbackBox.style.color = '#f56565'; // Rot
+                feedbackBox.innerHTML = `<i class="fas fa-times-circle"></i> Falsch! Korrekter Wortlaut wäre:<br><em>"${correctAnswer}"</em>`;
             }
         }
 
+        function handleTrainerPress(event) {
+            if (event.key === 'Enter') checkTrainerAnswer();
+        }
+
         function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
     </script>
