@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triebfahrzeugführer 2026 Klasse 14 - Intern</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- PDF.js Bibliothek zum automatischen Auslesen von PDFs im Browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
@@ -773,6 +774,7 @@
 </head>
 <body>
 
+    <!-- Passwordsperre -->
     <div id="lockScreen" class="lock-screen">
         <div class="lock-card">
             <h2><i class="fas fa-lock"></i> Interner Bereich</h2>
@@ -783,8 +785,10 @@
         </div>
     </div>
 
+    <!-- Die eigentliche Website -->
     <div id="protected-content">
 
+        <!-- Top Navigation Bar -->
         <nav>
             <div class="nav-brand">Triebfahrzeugführer <span>2026</span> Klasse 14</div>
             <div class="nav-links">
@@ -803,6 +807,7 @@
             </div>
         </nav>
 
+        <!-- Hero Section -->
         <header class="hero">
             <div class="logo-wrapper">
                 <img src="1000194537.jpeg" alt="Loklöwen Logo" class="logo-img" onclick="openLightbox(this, 'Loklöwen-Logo')">
@@ -811,8 +816,10 @@
             <p class="subtitle">Willkommen in unserer Community. Hier findest du unsere Richtlinien für erfolgreiches und gemeinsames Lernen auf Augenhöhe.</p>
         </header>
 
+        <!-- Main Content Container -->
         <main class="main-container">
 
+            <!-- Musik-Player -->
             <div style="text-align: center; margin: 0 auto 40px auto; padding: 20px; background: rgba(20, 10, 5, 0.8); border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 12px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
                 <h4 style="color: #ffb700; margin-bottom: 10px; font-size: 1rem;"><i class="fas fa-music"></i> Loklöwen Soundtrack</h4>
                 <audio controls loop style="width: 100%;">
@@ -822,6 +829,7 @@
                 <p style="font-size: 0.8rem; color: #a3958c; margin-top: 8px;">Dauerschleife</p>
             </div>
 
+            <!-- INTERNE LERN- & CHAT-APP SEKTION MIT FLASHCARD TRAINER -->
             <section id="lernapp" class="app-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-comments"></i> Lern- & Chat-Zentrale</h2>
@@ -835,6 +843,7 @@
                     <button class="app-tab-btn" onclick="switchTab(event, 'tab-video')"><i class="fas fa-video"></i> Videocall</button>
                 </div>
 
+                <!-- Tab 1: Klassen-Chat -->
                 <div id="tab-groupchat" class="app-tab-content active">
                     <div class="chat-box">
                         <div class="chat-messages" id="chatMessages">
@@ -851,10 +860,11 @@
                     </div>
                 </div>
 
+                <!-- Tab 2: AUTOMATISCHER FLASHCARD-TRAINER -->
                 <div id="tab-trainer" class="app-tab-content">
                     <div class="trainer-card">
-                        <h3 style="color: var(--bright-gold); margin-bottom: 10px;"><i class="fas fa-book-reader"></i> PDF-Skript Flashcard-Trainer</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Lade deine Ausbildungs-PDF hoch. Die App zerteilt den Text automatisch in lernbare Abschnitte!</p>
+                        <h3 style="color: var(--bright-gold); margin-bottom: 10px;"><i class="fas fa-book-reader"></i> PDF-Skript Wortlaut-Trainer</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Lade die offiziellen Schulungs-PDFs hoch. Die App zerteilt den Regelwerk-Text automatisch in lernbare Abschnitte für die Prüfung!</p>
                         
                         <div class="pdf-upload-box">
                             <input type="file" id="pdfFileInput" accept="application/pdf" style="color: #fff;" onchange="loadPDFAndExtract(event)">
@@ -872,6 +882,7 @@
                     </div>
                 </div>
 
+                <!-- Tab 3: Lernmaterialien -->
                 <div id="tab-materials" class="app-tab-content">
                     <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                         <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-cloud-upload-alt"></i> Skripte & Notizen tauschen</h3>
@@ -881,6 +892,7 @@
                     </div>
                 </div>
 
+                <!-- Tab 4: Videocall -->
                 <div id="tab-video" class="app-tab-content">
                     <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                         <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-video"></i> Loklöwen Lern-Videocall</h3>
@@ -958,6 +970,7 @@
                 </div>
             </div>
 
+            <!-- Unsere Trainingsmodule -->
             <section class="modules-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-book-open"></i> Unsere Trainingsmodule</h2>
@@ -970,6 +983,7 @@
                 <p style="font-size: 0.85rem; color: var(--bright-gold); margin-top: 10px;"><i class="fas fa-search-plus"></i> Klicke auf das Bild, um es in Großansicht zu öffnen</p>
             </section>
 
+            <!-- Praxis in Putlitz -->
             <section id="putlitz" class="putlitz-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-train"></i> Praxis in Putlitz</h2>
@@ -995,6 +1009,7 @@
                 </div>
             </section>
 
+            <!-- Welpen Galerie -->
             <section id="welpen" class="welpen-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-paw"></i> Bilder von Loklöwenwelpen</h2>
@@ -1021,12 +1036,14 @@
             </section>
         </main>
 
+        <!-- Lightbox Modal -->
         <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
             <span class="lightbox-close">&times;</span>
             <img id="lightbox-img" src="" alt="Großansicht">
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
 
+        <!-- Footer -->
         <footer>
             <div class="footer-links">
                 <a href="https://webmail.strato.de" target="_blank">Strato</a> | 
@@ -1038,6 +1055,7 @@
 
     </div>
 
+    <!-- JavaScript Logik inklusive Flashcard-Parser -->
     <script>
         // PASSWORT SCHUTZ
         function checkPassword() {
