@@ -377,6 +377,42 @@
             display: block;
         }
 
+        /* FAQ / Lernkarten Style im Dark/Fire Design */
+        .faq-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-card:hover {
+            background: rgba(255, 102, 0, 0.1);
+            border-color: var(--bright-gold);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .faq-question {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: var(--bright-gold);
+        }
+
+        .faq-answer {
+            margin-top: 12px;
+            display: none;
+            color: var(--text-muted);
+            line-height: 1.6;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 12px;
+        }
+
+        .faq-card.active .faq-answer {
+            display: block;
+        }
+
         /* Chat UI */
         .chat-box {
             background: rgba(0, 0, 0, 0.6);
@@ -804,22 +840,34 @@
                 <p style="font-size: 0.8rem; color: #a3958c; margin-top: 8px;">Dauerschleife</p>
             </div>
 
-            <!-- INTERNE LERN- & CHAT-APP SEKTION MIT WORTLAUT-TRAINER -->
+            <!-- INTERNE LERN- & CHAT-APP SEKTION MIT WORTLAUT-TRAINER & FAQ -->
             <section id="lernapp" class="app-section">
                 <div class="section-header" style="margin-top: 0;">
                     <h2 class="section-title"><i class="fas fa-comments"></i> Lern- & Chat-Zentrale</h2>
                 </div>
-                <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Eure direkte Plattform für den Austausch und das exakte Wortlaut-Lernen.</p>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Eure direkte Plattform für den Austausch, das Handbuch-Wissen und das exakte Wortlaut-Lernen.</p>
 
                 <div class="app-tabs">
-                    <button class="app-tab-btn active" onclick="switchTab(event, 'tab-groupchat')"><i class="fas fa-users"></i> Klassen-Chat</button>
+                    <button class="app-tab-btn active" onclick="switchTab(event, 'tab-faq')"><i class="fas fa-book-open"></i> Handbuch-FAQ</button>
+                    <button class="app-tab-btn" onclick="switchTab(event, 'tab-groupchat')"><i class="fas fa-users"></i> Klassen-Chat</button>
                     <button class="app-tab-btn" onclick="switchTab(event, 'tab-trainer')"><i class="fas fa-brain"></i> Wortlaut-Trainer</button>
                     <button class="app-tab-btn" onclick="switchTab(event, 'tab-materials')"><i class="fas fa-folder-open"></i> Lernmaterialien</button>
                     <button class="app-tab-btn" onclick="switchTab(event, 'tab-video')"><i class="fas fa-video"></i> Videocall</button>
                 </div>
 
-                <!-- Tab 1: Klassen-Chat -->
-                <div id="tab-groupchat" class="app-tab-content active">
+                <!-- Tab 1: Handbuch-FAQ („Lernen lernen“) -->
+                <div id="tab-faq" class="app-tab-content active">
+                    <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,102,0,0.3);">
+                        <h3 style="color: var(--bright-gold); margin-bottom: 8px;"><i class="fas fa-question-circle"></i> Wichtige Fragen & Antworten („Lernen lernen“)</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">Klicke auf eine Frage aus dem Handbuch, um die Erklärung anzuzeigen.</p>
+                        <div id="faq-container">
+                            <!-- Wird dynamisch per JavaScript befüllt -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Klassen-Chat -->
+                <div id="tab-groupchat" class="app-tab-content">
                     <div class="chat-box">
                         <div class="chat-messages" id="chatMessages">
                             <div class="chat-message">
@@ -835,7 +883,7 @@
                     </div>
                 </div>
 
-                <!-- Tab 2: WORTLAUT-TRAINER (Strenger Modus) -->
+                <!-- Tab 3: WORTLAUT-TRAINER (Strenger Modus) -->
                 <div id="tab-trainer" class="app-tab-content">
                     <div class="trainer-card">
                         <div style="color: var(--bright-gold); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 5px;"><i class="fas fa-graduation-cap"></i> Regelwerk Wortlaut-Trainer</div>
@@ -852,7 +900,7 @@
                     </div>
                 </div>
 
-                <!-- Tab 3: Lernmaterialien -->
+                <!-- Tab 4: Lernmaterialien -->
                 <div id="tab-materials" class="app-tab-content">
                     <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                         <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-cloud-upload-alt"></i> Skripte & Notizen tauschen</h3>
@@ -862,7 +910,7 @@
                     </div>
                 </div>
 
-                <!-- Tab 4: Videocall -->
+                <!-- Tab 5: Videocall -->
                 <div id="tab-video" class="app-tab-content">
                     <div style="background: rgba(0,0,0,0.5); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                         <h3 style="color: var(--bright-gold); margin-bottom: 15px;"><i class="fas fa-video"></i> Loklöwen Lern-Videocall</h3>
@@ -1057,6 +1105,59 @@
             event.currentTarget.classList.add('active');
         }
 
+        // HANDBUCH-FAQ DATEN & GENERIERUNG
+        const lokLoewenFragen = [
+          {
+            frage: "Warum ist 'Lernen lernen' in Eisenbahnberufen so entscheidend?",
+            antwort: "Weil in sicherheitsrelevanten Berufen (wie Triebfahrzeugführer/innen oder Wagenprüfer/innen) umfangreiche Fachinhalte und Vorschriften nicht nur einmal gehört oder auswendig gelernt werden dürfen, sondern strukturiert aufgenommen, wiederholt und in sicheres praktisches Handeln überführt werden müssen[cite: 1]."
+          },
+          {
+            frage: "Was besagt die Lernkette von Wissen zu Handlungskompetenz?",
+            antwort: "Die Lernkette besteht aus vier Schritten: 1. Wissen (Begriff/Regel kennen), 2. Verstehen (erklären, warum sie wichtig ist), 3. Anwenden (erkennen, wann man das Wissen braucht) und 4. Handlungskompetenz (sicher, nachvollziehbar und verantwortungsvoll handeln)[cite: 1]."
+          },
+          {
+            frage: "Wie sieht der einfache Wiederholungsrhythmus für das Langzeitgedächtnis aus?",
+            antwort: "Nach 1 Tag (3 Kernaussagen ohne Vorlage erklären), nach 3 Tagen (5 Karteikarten oder Selbsttestfragen bearbeiten), nach 1 Woche (Thema in 2 Minuten mit Praxisbeispiel erklären) und vor Prüfungen (gezielt Online-Lernkontrollen nutzen und Fehler nacharbeiten)[cite: 1]."
+          },
+          {
+            frage: "Was versteht man unter der '4-Schritt-Methode' für schwierige Fachtexte und Vorschriften?",
+            antwort: "1. Überblick verschaffen (Überschrift und Struktur lesen), 2. Kernaussagen sparsam markieren (Regeln, Bedingungen, Ausnahmen), 3. In eigene Worte übersetzen ('Das heißt für mich...') und 4. Bedeutung fürs Handeln klären (Was folgt daraus für den Bahnhof, Simulator oder die Wagenprüfung?)[cite: 1]."
+          },
+          {
+            frage: "Wie funktioniert die 'Wenn-dann-Brücke' zur Verknüpfung von Theorie und Praxis?",
+            antwort: "Man verbindet theoretische Inhalte mit beruflichem Handeln nach dem Muster: 'Wenn ich in der Praxis [Situation] erkenne, dann muss ich [prüfen / fragen / melden / handeln]'[cite: 1]."
+          },
+          {
+            frage: "Welche drei Aufgabenbereiche unterscheidet ein strukturierter Prüfungslernplan?",
+            antwort: "1. Wiederholen (Wissen durch Karteikarten und Fehlerlisten wieder verfügbar machen), 2. Üben (Anwendung durch Fallfragen und Wenn-dann-Szenarien trainieren) und 3. Prüfen (unter realistischen Bedingungen mit Probeklausuren und Zeitlimit testen)[cite: 1]."
+          },
+          {
+            frage: "Wann sollte man in der Weiterbildung aktiv Unterstützung suchen?",
+            antwort: "Unterstützung durch Dozierende, Coaches oder die Akademie ist keine Schwäche, sondern eine Lernstrategie – besonders wenn man frühzeitig merkt, dass Stoffmengen, Lernstress, Überforderung oder unklare Fachinhalte über mehrere Tage anhalten[cite: 1]."
+          }
+        ];
+
+        function initFAQ() {
+            const faqContainer = document.getElementById('faq-container');
+            if (!faqContainer) return;
+
+            lokLoewenFragen.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('faq-card');
+
+                card.innerHTML = `
+                    <div class="faq-question"><i class="fas fa-question" style="color: var(--primary-fire); margin-right: 8px;"></i> ${item.frage}</div>
+                    <div class="faq-answer">${item.antwort}</div>
+                `;
+
+                card.addEventListener('click', () => {
+                    card.classList.toggle('active');
+                });
+
+                faqContainer.appendChild(card);
+            });
+        }
+
         // CHAT LOGIK
         function sendChatMessage() {
             const nameInput = document.getElementById('chatNameInput');
@@ -1105,6 +1206,8 @@
             const statsBox = document.getElementById('trainerStats');
             const feedbackBox = document.getElementById('trainerFeedback');
             
+            if (!qBox) return;
+
             qBox.textContent = trainerQuestions[currentTrainerIndex].question;
             hintBox.textContent = trainerQuestions[currentTrainerIndex].hint;
             statsBox.textContent = `Frage ${currentTrainerIndex + 1} von ${trainerQuestions.length}`;
@@ -1148,6 +1251,7 @@
         }
 
         window.onload = function() {
+            initFAQ();
             loadTrainerQuestion();
         };
 
