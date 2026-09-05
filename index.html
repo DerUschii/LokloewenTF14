@@ -11,7 +11,10 @@
             margin: 0;
             padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
         .chat-container {
             width: 100%;
@@ -20,6 +23,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
         h1 {
             font-size: 1.5rem;
@@ -79,6 +83,20 @@
         button:hover {
             background-color: #2b6cb0;
         }
+        .footer-links {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: auto;
+        }
+        .footer-links a {
+            color: #3182ce;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -96,6 +114,12 @@
             <input type="text" id="messageInput" placeholder="Schreibe eine Nachricht..." autofocus>
             <button onclick="sendMessage()">Senden</button>
         </div>
+    </div>
+
+    <div class="footer-links">
+        <a href="https://webmail.strato.de" target="_blank">Strato</a> | 
+        <a href="#" target="_blank">Publisher</a> | 
+        <a href="https://lernwelt-lokloewen.de/login" target="_blank">Lernwelten</a>
     </div>
 
     <script>
